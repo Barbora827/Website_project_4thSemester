@@ -97,9 +97,9 @@ $total_products = $pdo->query('SELECT * FROM bows')->rowCount();
     <!--Breadcrumbs-->
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb" id="bebas">
-        <li class="breadcrumb-item"><a href="/">Hlavní stránka</a></li>
-        <li class="breadcrumb-item"><a href="portfolio.html">Portfolio</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Vývazky</li>
+        <li class="breadcrumb-item"><a href="index.php">Main page</a></li>
+        <li class="breadcrumb-item"><a href="portfolio.html">Products</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Bows</li>
       </ol>
     </nav>
 

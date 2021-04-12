@@ -66,8 +66,8 @@
         <!--Breadcrumbs-->
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb" id="bebas">
-                <li class="breadcrumb-item"><a href="/">Hlavní stránka</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Portfolio</li>
+                <li class="breadcrumb-item"><a href="/">Main page</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Products</li>
             </ol>
         </nav>
 
