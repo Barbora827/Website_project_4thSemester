@@ -1,0 +1,186 @@
+@font-face{
+   src: url(fonts/Bhavuka-Regular-400);
+   font-family: bhavuka;
+}
+
+.bb-bg-tan {
+    background-color: #fae3c4;
+}
+
+.bb-code {
+    line-height: 1rem;
+    padding: .2rem .4rem;
+    font-size: 90%;
+    color: #bd4147;
+    background-color: #f8f9fa;
+    border-radius: .25rem;
+}
+
+.bb-grid > .col, .bb-grid [class^=col-] {
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+    background-color: rgba(86,61,124,.15);
+    border: 1px solid rgba(86,61,124,.2);
+}
+
+.bb-height {
+    height: 8rem;
+    background-color: rgb(121, 206, 206);
+}
+
+.bb-height-tall {
+    height: 12rem;
+    background-color: rgb(186, 121, 206);
+}
+
+.bb-height-image{
+    height: 15rem;
+    background-color: rgb(183, 206, 121);
+}
+
+.bb-height-image-tall{
+    height: 18rem;
+    background-color: rgb(206, 121, 135);
+}
+
+.bb-highlight {
+    background-color: rgba(86,61,124,.15);
+    border: 1px solid rgba(86,61,124,.2);
+}
+
+.bb-hr-white {
+    margin-top: 0;
+    height: 1px;
+    background-color: #fff;
+    margin-left: 0px;
+}
+
+.bb-line-height {
+    line-height: 1.5rem;
+}
+
+.bb-profile-pic {
+    width: 80px;
+    height: 53px;
+}
+
+.bb-px{
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+}
+
+.bb-scrollspy-container {
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 15px;
+    padding-left: 15px;
+    width: 100%;
+}
+
+.bb-scrollspy-fixed {
+    position: fixed;
+    z-index: 99;
+}
+
+.bb-scrollspy-heading {
+    padding-top: 4rem;
+}
+
+.bb-scrollspy-example {
+    position: relative;
+    height: 200px;
+    margin-top: .5rem; 
+    overflow-y: scroll; 
+}
+
+.bb-scrollspy-example-2 {
+    position: relative;
+    height: 370px;
+    overflow: auto;
+}
+
+@media (min-width: 576px) {
+    .bb-px{
+        padding-left: 2.75rem !important;
+        padding-right: 2.75rem !important;        
+    }    
+}
+
+@media (min-width: 768px) {
+    .bb-px{
+        padding-left: 4rem !important;
+        padding-right: 4rem !important;        
+    }
+}
+
+@media (min-width: 992px) {
+    .bb-px{
+        padding-left: 5rem !important;
+        padding-right: 5rem !important;
+    }
+}
+
+@media (min-width: 1200px) {
+    .bb-scrollspy-container {
+        max-width: 1140px;
+    }
+}
+
+#portfolio-header{
+    font-size: 50px;
+    color: #343a40;
+}
+
+#shopcart{
+    position: absolute;
+    top: 60px;
+    right: 64px;
+    font-size: 18px;
+}
+
+
+@media (max-width: 578px) {
+    #shopcart {
+        top: 57px;
+        right: 54px;
+    }
+}
+
+#form-breadcrumbs{
+    position: absolute;
+    top: 20px;
+    left: 70px;
+}
+
+#bebas{
+    font-family:'Bebas Neue', cursive;
+  }
+  
+  #kaushan{
+    font-family:'Kaushan Script', cursive;
+  }
+  
+  #bhavuka{
+    font-family: bhavuka;
+  }
+  
+  #odkazy{
+    font-size: 35px;
+    color: #ddac8f;
+  }
+  
+.buttons input[type="submit"] {
+	margin-left: 5px;
+	padding: 12px 20px;
+	border: 0;
+	background: #b82c5a;
+	color: #FFFFFF;
+	font-size: 14px;
+	font-weight: bold;
+	cursor: pointer;
+	border-radius: 5px;
+}
+.buttons input[type="submit"]:hover {
+	background: #434f61;
+    cursor: pointer;
+}
