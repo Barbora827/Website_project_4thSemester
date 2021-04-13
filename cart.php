@@ -1,3 +1,10 @@
+<!--INSERT INTO `products` (`id`, `name`, `descript`, `price`, `rrp`, `quantity`, `img`, `date_added`) VALUES
+(2, 'Green bows', 'bow', '9.99', '0.00', 50, 'vyvazky_zelene.jpg', '2019-03-13 18:52:49'),
+(3, 'Silver bows', 'bow', '9.99', '0.00', 50, 'vyvazky_sede.jpg', '2019-03-13 18:47:56'),
+(4, 'Red envelope', 'envelope', '14.99', '0.00', 50, 'obalka_red.jpg', '2019-03-13 17:42:04'),
+(5, 'Royal blue envelope', 'envelope', '14.99', '0.00', 50, 'obalka_red.jpg', '2019-03-13 17:42:04'),
+(6, 'Gold envelope', 'envelope', '14.99', '0.00', 50, 'obalka_red.jpg', '2019-03-13 17:42:04'); -->
+
 <?php
 // If the user clicked the add to cart button on the product page we can check for the form data
 if (isset($_POST['product_id'], $_POST['quantity']) && is_numeric($_POST['product_id']) && is_numeric($_POST['quantity'])) {
@@ -5,12 +12,12 @@ if (isset($_POST['product_id'], $_POST['quantity']) && is_numeric($_POST['produc
     $product_id = (int)$_POST['product_id'];
     $quantity = (int)$_POST['quantity'];
     // Prepare the SQL statement, we basically are checking if the product exists in our databaser
-    $stmt = $pdo->prepare('SELECT * FROM bows WHERE id = ?');
+    $stmt = $pdo->prepare('SELECT * FROM products WHERE id = ?');
     $stmt->execute([$_POST['product_id']]);
     // Fetch the product from the database and return the result as an Array
-    $bow = $stmt->fetch(PDO::FETCH_ASSOC);
+    $product = $stmt->fetch(PDO::FETCH_ASSOC);
     // Check if the product exists (array is not empty)
-    if ($bow && $quantity > 0) {
+    if ($product && $quantity > 0) {
         // Product exists in database, now we can create/update the session variable for the cart
         if (isset($_SESSION['cart']) && is_array($_SESSION['cart'])) {
             if (array_key_exists($product_id, $_SESSION['cart'])) {
@@ -70,7 +77,7 @@ if ($products_in_cart) {
     // There are products in the cart so we need to select those products from the database
     // Products in cart array to question mark string array, we need the SQL statement to include IN (?,?,?,...etc)
     $array_to_question_marks = implode(',', array_fill(0, count($products_in_cart), '?'));
-    $stmt = $pdo->prepare('SELECT * FROM bows WHERE id IN (' . $array_to_question_marks . ')');
+    $stmt = $pdo->prepare('SELECT * FROM products WHERE id IN (' . $array_to_question_marks . ')');
     // We only need the array keys, not the values, the keys are the id's of the products
     $stmt->execute(array_keys($products_in_cart));
     // Fetch the products from the database and return the result as an Array
@@ -151,7 +158,7 @@ if ($products_in_cart) {
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb" id="bebas">
                 <li class="breadcrumb-item"><a href="index.php">Main page</a></li>
-                <li class="breadcrumb-item"><a href="/">Products</a></li>
+                <li class="breadcrumb-item"><a href="productlist.php">Products</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Shopping cart</li>
             </ol>
         </nav>
@@ -195,10 +202,11 @@ if ($products_in_cart) {
                             <?php endif; ?>
                         </tbody>
                     </table>
-                    <div class="subtotal">
-                        <span class="text" id="bebas" style="font-size: 20px;">Subtotal</span>
-                        <span class="price" id="bebas" style="font-size: 20px;">&dollar;<?= $subtotal ?></span>
+                    <div class="subtotal mb-2">
+                        <span class="text" id="bebas" style="font-size: 25px;">Subtotal</span>
+                        <span class="price" id="bebas" style="font-size: 25px;">&dollar;<?= $subtotal ?></span>
                     </div>
+                
                     <div class="buttons">
                         <input type="submit" id="bebas" style="cursor: pointer; font-size: 20px;" value="Update" name="update">
                         <input type="submit" id="bebas" style="cursor: pointer; font-size: 20px;" value="Place Order" name="placeorder">

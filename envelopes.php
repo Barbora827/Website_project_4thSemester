@@ -4,16 +4,16 @@ $num_products_on_each_page = 30;
 // The current page, in the URL this will appear as index.php?page=products&p=1, index.php?page=products&p=2, etc...
 $current_page = isset($_GET['p']) && is_numeric($_GET['p']) ? (int)$_GET['p'] : 1;
 // Select products ordered by the date added
-$stmt = $pdo->prepare("SELECT * FROM products WHERE descript='bow' ORDER BY id DESC LIMIT ?,?");
+$stmt = $pdo->prepare("SELECT * FROM products WHERE descript='envelope' ORDER BY id DESC LIMIT ?,?");
 // bindValue will allow us to use integer in the SQL statement, we need to use for LIMIT
 $stmt->bindValue(1, ($current_page - 1) * $num_products_on_each_page, PDO::PARAM_INT);
 $stmt->bindValue(2, $num_products_on_each_page, PDO::PARAM_INT);
 $stmt->execute();
 // Fetch the products from the database and return the result as an Array
-$products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$envelopes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 // Get the total number of products
-$total_products = $pdo->query('SELECT * FROM products')->rowCount();
+$total_products = $pdo->query('SELECT * FROM envelopes')->rowCount();
 
 ?>
 
@@ -91,7 +91,7 @@ $total_products = $pdo->query('SELECT * FROM products')->rowCount();
   <div class="container text-center my-10">
     <div class="row mx-0 justify-content-center">
       <a href="/"><img src="img/logo.png" class="img-2 mx-0 mt-10"></a>
-      <h1 class="mt-5 mr-2" id="portfolio-header">Bows</h1>
+      <h1 class="mt-5 mr-2" id="portfolio-header">Envelopes</h1>
     </div>
 
     <!--Breadcrumbs-->
@@ -99,7 +99,7 @@ $total_products = $pdo->query('SELECT * FROM products')->rowCount();
       <ol class="breadcrumb" id="bebas">
         <li class="breadcrumb-item"><a href="index.php">Main page</a></li>
         <li class="breadcrumb-item"><a href="productlist.php">Products</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Bows</li>
+        <li class="breadcrumb-item active" aria-current="page">Envelopes</li>
       </ol>
     </nav>
 
@@ -108,22 +108,22 @@ $total_products = $pdo->query('SELECT * FROM products')->rowCount();
     <section id="gallery">
       <div class="container">
         <div class="row">
-        <?php foreach ($products as $bow): ?>
+        <?php foreach ($envelopes as $envelope): ?>
           <div class="col-md-6 col-lg-4 mb-4">
             <div class="card">
-            <img src="img/<?=$bow['img']?>" class="card-img-top" alt="<?=$bow['name']?>">
+            <img src="img/<?=$envelope['img']?>" class="card-img-top" alt="<?=$envelope['name']?>">
               <div class="card-body">
-              <span class="name"><?=$bow['name']?></span><br>
+              <span class="name"><?=$envelope['name']?></span><br>
             <span class="price">
-                &dollar;<?=$bow['price']?>
-                <?php if ($bow['rrp'] > 0): ?>
-                <span class="rrp">&dollar;<?=$bow['rrp']?></span>
+                &dollar;<?=$envelope['price']?>
+                <?php if ($envelope['rrp'] > 0): ?>
+                <span class="rrp">&dollar;<?=$envelope['rrp']?></span>
                 <?php endif; ?>
             </span>
         <br>
         <form action="index.php?page=cart" method="post">
-            <input type="number" class="mt-2" name="quantity" value="1" min="1" max="<?=$bow['quantity']?>" placeholder="Quantity" required>
-            <input type="hidden" name="product_id" value="<?=$bow['id']?>"><br>
+            <input type="number" class="mt-2" name="quantity" value="1" min="1" max="<?=$envelope['quantity']?>" placeholder="Quantity" required>
+            <input type="hidden" name="product_id" value="<?=$envelope['id']?>"><br>
             <input type="submit" class="btn mt-3 btn-outline-dark btn-sm" value="Add To Cart">
         </form>
               </div>

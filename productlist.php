@@ -73,10 +73,10 @@
 
         <div class="row mx-0 my-0 justify-content-center">
             <div class="col-5 mt-1 col-md p-0 col-lg bb-height-image-tall" id="portfolio">
-                <a href="index.php?page=bows"><span class="img-label">Vývazky</span></a>
+                <a href="index.php?page=bows"><span class="img-label">Bows</span></a>
             </div>
             <div class="col-5 mt-1 mx-1 col-md mx-md-1 col-lg bb-height-image-tall" id="portfolio">
-                <a href="obalky.html"><span class="img-label">Obálky</span></a>
+                <a href="index.php?page=envelopes"><span class="img-label">Envelopes</span></a>
             </div>
             <div class="col-5 mt-1 col-md p-0 col-lg bb-height-image-tall" id="portfolio">
                 <a href="polstarky.html"><span class="img-label">Polštářky</span></a>
