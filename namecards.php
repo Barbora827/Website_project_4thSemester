@@ -4,7 +4,7 @@ $num_products_on_each_page = 30;
 // The current page, in the URL this will appear as index.php?page=products&p=1, index.php?page=products&p=2, etc...
 $current_page = isset($_GET['p']) && is_numeric($_GET['p']) ? (int)$_GET['p'] : 1;
 // Select products ordered by the date added
-$stmt = $pdo->prepare("SELECT * FROM products WHERE category='bow' ORDER BY id DESC LIMIT ?,?");
+$stmt = $pdo->prepare("SELECT * FROM products WHERE category='namecard' ORDER BY id DESC LIMIT ?,?");
 // bindValue will allow us to use integer in the SQL statement, we need to use for LIMIT
 $stmt->bindValue(1, ($current_page - 1) * $num_products_on_each_page, PDO::PARAM_INT);
 $stmt->bindValue(2, $num_products_on_each_page, PDO::PARAM_INT);
@@ -50,18 +50,18 @@ $total_products = $pdo->query('SELECT * FROM products')->rowCount();
         <div class="navbar-nav ml-auto">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link mb-1" id="mainnav-item" href="index.php">Home<span
+              <a class="nav-link mb-1" id="mainnav-item" href="index.html">Hlavní stránka<span
                   class="sr-only"></span></a>
             </li>
-            <li class="nav-item my-1"><a class="nav-link" id="mainnav-item" href="index.html">About us<span
+            <li class="nav-item my-1"><a class="nav-link" id="mainnav-item" href="index.html">O nás<span
                   class="sr-only"></span></a></li>
-            <li class="nav-item my-1"><a class="nav-link" id="mainnav-item" href="productlist.php">Products<span
+            <li class="nav-item my-1"><a class="nav-link" id="mainnav-item" href="objednavka.html">Objednávka<span
                   class="sr-only"></span></a></li>
-            <li class="nav-item my-1"><a class="nav-link" id="mainnav-item" href="portfolio.php">Portfolio<span
+            <li class="nav-item my-1"><a class="nav-link" id="mainnav-item" href="nabidka.html">Nabídka<span
                   class="sr-only"></span></a></li>
-            <li class="nav-item my-1"><a class="nav-link" id="mainnav-item" href="tutorial.php">How to order<span
+            <li class="nav-item my-1"><a class="nav-link" id="mainnav-item" href="cenik.html">Ceník<span
                   class="sr-only"></span></a></li>
-            <li class="nav-item my-1"><a class="nav-link" id="mainnav-item" href="contact.php">Contact us<span
+            <li class="nav-item my-1"><a class="nav-link" id="mainnav-item" href="index.html">Kontakt<span
                   class="sr-only"></span></a></li>
           </ul>
         </div>
@@ -83,15 +83,15 @@ $total_products = $pdo->query('SELECT * FROM products')->rowCount();
     href="https://www.instagram.com/svatbyvpodhuri" role="button"><i class="fa fa-instagram"></i></a>
   <a class="btn btn-outline-dark btn-floating m-1 social-icon" id="socialicon-e" href="#!" role="button"><i
       class="fa fa-envelope"></i></a>
-      <a href="index.php?page=cart"><button class="btn btn-outline-dark" id="shopcart">
-        <i class="fa fa-shopping-cart"></i>
-    </button></a>
+  <button class="btn btn-outline-dark" id="shopcart">
+    <i class="fa fa-shopping-cart"></i>
+  </button>
 
   <!-- Heading Container -->
   <div class="container text-center my-10">
     <div class="row mx-0 justify-content-center">
-      <a href="index.php"><img src="img/logo.png" class="img-2" style="margin-top: 110px;"></a>
-      <h1 class="mr-3" style="margin-top: 70px;" id="portfolio-header">Bows</h1>
+      <a href="/"><img src="img/logo.png" class="img-2" style="margin-top: 110px;"></a>
+      <h1 class="mr-2" style="margin-top: 70px;" id="portfolio-header">Name cards</h1>
     </div>
 
     <!--Breadcrumbs-->
@@ -99,7 +99,7 @@ $total_products = $pdo->query('SELECT * FROM products')->rowCount();
       <ol class="breadcrumb" id="bebas">
         <li class="breadcrumb-item"><a href="index.php">Main page</a></li>
         <li class="breadcrumb-item"><a href="productlist.php">Products</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Bows</li>
+        <li class="breadcrumb-item active" aria-current="page">Name cards</li>
       </ol>
     </nav>
 
@@ -108,22 +108,22 @@ $total_products = $pdo->query('SELECT * FROM products')->rowCount();
     <section id="gallery">
       <div class="container">
         <div class="row">
-        <?php foreach ($products as $bow): ?>
+        <?php foreach ($products as $namecard): ?>
           <div class="col-md-6 col-lg-4 mb-4">
             <div class="card">
-            <img src="img/<?=$bow['img']?>" class="card-img-top" alt="<?=$bow['name']?>">
+            <img src="img/<?=$namecard['img']?>" class="card-img-top" alt="<?=$namecard['name']?>">
               <div class="card-body">
-              <span class="name" style="font-size: 20px; font-weight: 600"><?=$bow['name']?></span><br>
+              <span class="name" style="font-size: 20px; font-weight: 600"><?=$namecard['name']?></span><br>
             <span class="price" id="bebas" style="font-size: 20px;">
-                &dollar;<?=$bow['price']?>
-                <?php if ($bow['rrp'] > 0): ?>
-                <span class="rrp">&dollar;<?=$bow['rrp']?></span>
+                &dollar;<?=$namecard['price']?>
+                <?php if ($namecard['rrp'] > 0): ?>
+                <span class="rrp">&dollar;<?=$namecard['rrp']?></span>
                 <?php endif; ?>
             </span>
         <br>
         <form action="index.php?page=cart" method="post">
-            <input type="number" class="mt-2" id="bebas" style="font-size: 18px;" name="quantity" value="1" min="1" max="<?=$bow['quantity']?>" placeholder="Quantity" required>
-            <input type="hidden" name="product_id" value="<?=$bow['id']?>"><br>
+            <input type="number" class="mt-2" id="bebas" style="font-size: 18px;" name="quantity" value="1" min="1" max="<?=$namecard['quantity']?>" placeholder="Quantity" required>
+            <input type="hidden" name="product_id" value="<?=$namecard['id']?>"><br>
             <input type="submit" class="btn mt-3 btn-addtocart btn-sm" value="Add To Cart">
         </form>
               </div>

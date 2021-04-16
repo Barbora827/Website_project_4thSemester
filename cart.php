@@ -114,21 +114,26 @@ if ($products_in_cart) {
             </button>
 
             <div class="collapse" id="sidebar-side" style="background-color: #f4f3ef;">
-                <div class="navbar-nav ml-auto">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link mb-1" id="mainnav-item" href="index.html">Hlavní stránka<span class="sr-only"></span></a>
-                        </li>
-                        <li class="nav-item my-1"><a class="nav-link" id="mainnav-item" href="index.html">O nás<span class="sr-only"></span></a></li>
-                        <li class="nav-item my-1"><a class="nav-link" id="mainnav-item" href="objednavka.html">Objednávka<span class="sr-only"></span></a></li>
-                        <li class="nav-item">
-                            <a class="nav-link mb-1" id="mainnav-item" href="cenik.html">Ceník<span class="sr-only"></span></a>
-                        </li>
-                        <li class="nav-item my-1"><a class="nav-link" id="mainnav-item" href="index.html">Kontakt<span class="sr-only"></span></a></li>
-                    </ul>
-                </div>
-            </div>
-            <!--Collapsing sidebar-->
+        <div class="navbar-nav ml-auto">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link mb-1" id="mainnav-item" href="index.php">Home<span
+                  class="sr-only"></span></a>
+            </li>
+            <li class="nav-item my-1"><a class="nav-link" id="mainnav-item" href="index.html">About us<span
+                  class="sr-only"></span></a></li>
+            <li class="nav-item my-1"><a class="nav-link" id="mainnav-item" href="productlist.php">Products<span
+                  class="sr-only"></span></a></li>
+            <li class="nav-item my-1"><a class="nav-link" id="mainnav-item" href="portfolio.php">Portfolio<span
+                  class="sr-only"></span></a></li>
+            <li class="nav-item my-1"><a class="nav-link" id="mainnav-item" href="tutorial.php">How to order<span
+                  class="sr-only"></span></a></li>
+            <li class="nav-item my-1"><a class="nav-link" id="mainnav-item" href="contact.php">Contact us<span
+                  class="sr-only"></span></a></li>
+          </ul>
+        </div>
+      </div>
+      <!--Collapsing sidebar-->
 
             <!--Main navbar-->
             <div class="collapse navbar-collapse" id="playgroundsNavbar">
@@ -142,16 +147,16 @@ if ($products_in_cart) {
     <a class="btn btn-outline-dark btn-floating m-1 social-icon" id="socialicon-f" href="https://www.facebook.com/svatbyvpodhuri" role="button"><i class="fa fa-facebook-f"></i></a>
     <a class="btn btn-outline-dark btn-floating m-1 social-icon" id="socialicon-i" href="https://www.instagram.com/svatbyvpodhuri" role="button"><i class="fa fa-instagram"></i></a>
     <a class="btn btn-outline-dark btn-floating m-1 social-icon" id="socialicon-e" href="#!" role="button"><i class="fa fa-envelope"></i></a>
-    <button class="btn btn-outline-dark" id="shopcart">
+    <a href="index.php?page=cart"><button class="btn btn-outline-dark" id="shopcart">
         <i class="fa fa-shopping-cart"></i>
-    </button>
+    </button></a>
 
 
 
     <!-- Heading Container -->
     <div class="container text-center" style="margin-top: 130px;">
         <div class="row mx-0 justify-content-center">
-            <a href="/"><img src="img/logo.png" class="img-2 mt-10"></a>
+            <a href="index.php"><img src="img/logo.png" class="img-2 mt-10"></a>
         </div>
 
         <!--Breadcrumbs-->
@@ -162,10 +167,11 @@ if ($products_in_cart) {
                 <li class="breadcrumb-item active" aria-current="page">Shopping cart</li>
             </ol>
         </nav>
+        </div>
 
 
-        <div class="cart content-wrapper">
-            <h1 class="mb-5">Shopping Cart</h1>
+        <div class="cart content-wrapper text-center">
+            <h1 class="mb-5 mr-2">Shopping Cart</h1>
             <form action="index.php?page=cart" method="post">
                 <div class="table-responsive">
                     <table class="table">
@@ -185,11 +191,11 @@ if ($products_in_cart) {
                             <?php else : ?>
                                 <?php foreach ($products as $product) : ?>
                                     <tr>
-                                        <td class="img">
-                                                <img src="img/<?= $product['img'] ?>" style="height: 130px; width: 150px; margin-left: 50px" alt="<?= $product['name'] ?>">
+                                        <td style="width: 400px;" colspan="1">
+                                                <img src="img/<?= $product['img'] ?>" class="mb-2" style="height: 130px; width: 150px; margin-left: 55px" alt="<?= $product['name'] ?>">
                                            
                                             <a href="index.php?page=cart&remove=<?= $product['id'] ?>" class="remove ml-2" style="color:#bb183b; text-decoration: none; font-size: 18px;" id="bebas">Remove</a><br>
-                                            <a href="index.php?page=product&id=<?= $product['id'] ?>" style="color: black; font-size: 18px;" id="bebas"><?= $product['name'] ?></a>
+                                            <span style="color: #343a40; font-size: 20px;" id="bebas"><?= $product['name'] ?></span>
                                             
                                         </td>
                                         <td class="price" id="bebas" style="font-size: 20px;">&dollar;<?= $product['price'] ?></td>
@@ -202,23 +208,28 @@ if ($products_in_cart) {
                             <?php endif; ?>
                         </tbody>
                     </table>
+                    </div>
                     <div class="subtotal mb-2">
                         <span class="text" id="bebas" style="font-size: 25px;">Subtotal</span>
                         <span class="price" id="bebas" style="font-size: 25px;">&dollar;<?= $subtotal ?></span>
                     </div>
                 
                     <div class="buttons">
+                        <input name="action" onclick="location.href = '/webovky/productlist.php'" class="continue" id="bebas" spellcheck="false" style="cursor: pointer; font-size: 20px;" value="Continue shopping" name="update">
                         <input type="submit" id="bebas" style="cursor: pointer; font-size: 20px;" value="Update" name="update">
+                        <?php if (!empty($products)) : ?>
                         <input type="submit" id="bebas" style="cursor: pointer; font-size: 20px;" value="Place Order" name="placeorder">
+                        <?php else : ?>
+                            <?php endif; ?>
                     </div>
             </form>
-        </div>
-    </div>
+        
+    
 
 
 
     <!-- Footer -->
-    <footer class="bg-dark mt-5 text-center text-white">
+    <footer class="bg-dark mt-5 text-center text-white mx-0">
         <div class="container p-4">
             <section class="mb-4">
 

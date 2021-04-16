@@ -40,6 +40,11 @@
 
 .bb-height-image-tall{
     height: 18rem;
+    background-color: #ddac8f;
+}
+
+.bb-height-image-verytall{
+    height: 24rem;
     background-color: rgb(206, 121, 135);
 }
 
@@ -180,6 +185,38 @@
 	border-radius: 5px;
 }
 .buttons input[type="submit"]:hover {
+	color: #f4f3ef;
+    cursor: pointer;
+}
+
+.btn-addtocart {
+    color: #f4f3ef;
+    font-size: 20px;
+    background-color: #ddac8f;
+    box-shadow: 1px 1px 2px #000;
+    text-shadow: 1px 1px 2px #000;
+  }
+  
+  .btn-addtocart:hover {
+    color: #ddac8f;
+    background-color: #343a40;
+    border-color: #343a40;
+  }
+
+  .continue {
+	padding: 12px 0px;
+	border: 0;
+	background: #343a40;
+    text-align: center;
+	color: #ddac8f;
+	font-size: 18px;
+	cursor: pointer;
+	border-radius: 5px;
+    user-select: none;
+    text-decoration: none;
+    
+}
+.continue:hover {
 	color: #f4f3ef;
     cursor: pointer;
 }

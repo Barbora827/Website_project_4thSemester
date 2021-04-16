@@ -4,7 +4,7 @@ $num_products_on_each_page = 30;
 // The current page, in the URL this will appear as index.php?page=products&p=1, index.php?page=products&p=2, etc...
 $current_page = isset($_GET['p']) && is_numeric($_GET['p']) ? (int)$_GET['p'] : 1;
 // Select products ordered by the date added
-$stmt = $pdo->prepare("SELECT * FROM products WHERE descript='envelope' ORDER BY id DESC LIMIT ?,?");
+$stmt = $pdo->prepare("SELECT * FROM products WHERE category='envelope' ORDER BY id DESC LIMIT ?,?");
 // bindValue will allow us to use integer in the SQL statement, we need to use for LIMIT
 $stmt->bindValue(1, ($current_page - 1) * $num_products_on_each_page, PDO::PARAM_INT);
 $stmt->bindValue(2, $num_products_on_each_page, PDO::PARAM_INT);
@@ -50,18 +50,18 @@ $total_products = $pdo->query('SELECT * FROM envelopes')->rowCount();
         <div class="navbar-nav ml-auto">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link mb-1" id="mainnav-item" href="index.html">Hlavní stránka<span
+              <a class="nav-link mb-1" id="mainnav-item" href="index.php">Home<span
                   class="sr-only"></span></a>
             </li>
-            <li class="nav-item my-1"><a class="nav-link" id="mainnav-item" href="index.html">O nás<span
+            <li class="nav-item my-1"><a class="nav-link" id="mainnav-item" href="index.html">About us<span
                   class="sr-only"></span></a></li>
-            <li class="nav-item my-1"><a class="nav-link" id="mainnav-item" href="objednavka.html">Objednávka<span
+            <li class="nav-item my-1"><a class="nav-link" id="mainnav-item" href="productlist.php">Products<span
                   class="sr-only"></span></a></li>
-            <li class="nav-item my-1"><a class="nav-link" id="mainnav-item" href="nabidka.html">Nabídka<span
+            <li class="nav-item my-1"><a class="nav-link" id="mainnav-item" href="portfolio.php">Portfolio<span
                   class="sr-only"></span></a></li>
-            <li class="nav-item my-1"><a class="nav-link" id="mainnav-item" href="cenik.html">Ceník<span
+            <li class="nav-item my-1"><a class="nav-link" id="mainnav-item" href="tutorial.php">How to order<span
                   class="sr-only"></span></a></li>
-            <li class="nav-item my-1"><a class="nav-link" id="mainnav-item" href="index.html">Kontakt<span
+            <li class="nav-item my-1"><a class="nav-link" id="mainnav-item" href="contact.php">Contact us<span
                   class="sr-only"></span></a></li>
           </ul>
         </div>
@@ -83,15 +83,15 @@ $total_products = $pdo->query('SELECT * FROM envelopes')->rowCount();
     href="https://www.instagram.com/svatbyvpodhuri" role="button"><i class="fa fa-instagram"></i></a>
   <a class="btn btn-outline-dark btn-floating m-1 social-icon" id="socialicon-e" href="#!" role="button"><i
       class="fa fa-envelope"></i></a>
-  <button class="btn btn-outline-dark" id="shopcart">
-    <i class="fa fa-shopping-cart"></i>
-  </button>
+      <a href="index.php?page=cart"><button class="btn btn-outline-dark" id="shopcart">
+        <i class="fa fa-shopping-cart"></i>
+    </button></a>
 
   <!-- Heading Container -->
   <div class="container text-center my-10">
     <div class="row mx-0 justify-content-center">
-      <a href="/"><img src="img/logo.png" class="img-2 mx-0 mt-10"></a>
-      <h1 class="mt-5 mr-2" id="portfolio-header">Envelopes</h1>
+      <a href="index.php"><img src="img/logo.png" class="img-2" style="margin-top: 110px;"></a>
+      <h1 class="mr-2" style="margin-top: 70px;" id="portfolio-header">Envelopes</h1>
     </div>
 
     <!--Breadcrumbs-->
@@ -113,8 +113,8 @@ $total_products = $pdo->query('SELECT * FROM envelopes')->rowCount();
             <div class="card">
             <img src="img/<?=$envelope['img']?>" class="card-img-top" alt="<?=$envelope['name']?>">
               <div class="card-body">
-              <span class="name"><?=$envelope['name']?></span><br>
-            <span class="price">
+              <span class="name" style="font-size: 20px; font-weight: 600"><?=$envelope['name']?></span><br>
+            <span class="price" id="bebas" style="font-size: 20px;">
                 &dollar;<?=$envelope['price']?>
                 <?php if ($envelope['rrp'] > 0): ?>
                 <span class="rrp">&dollar;<?=$envelope['rrp']?></span>

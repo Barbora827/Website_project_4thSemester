@@ -8,11 +8,10 @@
     <title style="font-family:'Oswald', sans-serif;">Svatby v podhůří</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Berkshire+Swash&family=Josefin+Sans:wght@300;700&family=Kaushan+Script&family=Oswald:wght@300;600&family=Poiret+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
-    
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
@@ -32,7 +31,7 @@
             </li>
             <li class="nav-item my-1"><a class="nav-link" id="mainnav-item" href="index.html">About us<span
                   class="sr-only"></span></a></li>
-            <li class="nav-item my-1"><a class="nav-link" id="mainnav-item" href="portfolio.php">Portfolio<span
+            <li class="nav-item my-1"><a class="nav-link" id="mainnav-item" href="productlist.php">Products<span
                   class="sr-only"></span></a></li>
             <li class="nav-item my-1"><a class="nav-link" id="mainnav-item" href="tutorial.php">How to order<span
                   class="sr-only"></span></a></li>
@@ -63,49 +62,45 @@
     <!-- Heading Container -->
     <div class="container text-center" style="margin-top: 130px;">
         <div class="row mx-0 justify-content-center">
-            <a href="index.php"><img src="img/logo.png" class="img-2" style="margin-top: 110px;"></a>
+            <a href="index.php"><img src="img/logo.png" class="img-2" style="margin-top: 110px"></a>
         </div>
 
         <!--Breadcrumbs-->
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb" id="bebas">
                 <li class="breadcrumb-item"><a href="index.php">Main page</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Products</li>
+                <li class="breadcrumb-item active" aria-current="page">Portfolio</li>
             </ol>
         </nav>
 
         <div class="row mx-0 my-0 justify-content-center">
-            <div class="col-5 mt-1 col-md p-0 col-lg bb-height-image-tall" id="portfolio">
-                <a href="index.php?page=bows"><span class="img-label">Bows</span></a>
+            <div class="col-5 mt-1 col-md-8 p-0 mr-md-1 col-lg-8 bb-height-image-tall">
             </div>
-            <div class="col-5 mt-1 mx-1 col-md mx-md-1 col-lg bb-height-image-tall" id="portfolio">
-                <a href="index.php?page=envelopes"><span class="img-label">Envelopes</span></a>
-            </div>
-            <div class="col-5 mt-1 col-md p-0 col-lg bb-height-image-tall" id="portfolio">
-                <a href="index.php?page=pillows"><span class="img-label">Ring pillows</span></a>
-            </div>
-            <div class="col-5 mt-1 mx-1 col-md mx-md-1 col-lg bb-height-image-tall" id="portfolio">
-                <a href="index.php?page=boxes"><span class="img-label">Decorative boxes</span></a>
-            </div>
-        </div>
-        <div class="row mx-0  justify-content-center">
-            <div class="col-5 mt-1 col-md p-0 col-lg bb-height-image-tall" id="portfolio">
-                <a href="makronky.html"><span class="img-label">Macrones</span></a>
-            </div>
-            <div class="col-5 mt-1 mx-1 col-md mx-md-1 col-lg bb-height-image-tall" id="portfolio">
-                <a href="index.php?page=namecards"><span class="img-label">Name cards</span></a>
-            </div>
-            <div class="col-5 mt-1 col-md p-0 col-lg bb-height-image-tall" id="portfolio">
-                <span class="img-label">7</span>
-            </div>
-            <div class="col-5 mt-1 mx-1 col-md mx-md-1 col-lg bb-height-image-tall" id="portfolio">
-                <span class="img-label">8</span>
+            <div class="col-5 mt-1 mx-1 col-md mx-md-0 col-lg bb-height-image-tall">
             </div>
         </div>
 
+        <div class="row mx-0  justify-content-center">
+            <div class="col-5 mt-1 col-md-3 p-0 col-lg-3 bb-height-image-tall">
+            </div>
+            <div class="col-5 mt-1 mx-1 col-md-6 mx-md-1 col-lg-6 bb-height-image-tall">
+            </div>
+            <div class="col-5 mt-1 col-md p-0 col-lg bb-height-image-tall">           
+            </div>
+        </div>
+
+        <div class="row mx-0  justify-content-center">
+            <div class="col-5 mt-1 col-md p-0 col-lg bb-height-image-tall">
+            </div>
+            <div class="col-5 mt-1 mx-1 col-md mx-md-1 col-lg bb-height-image-tall">
+            </div>
+            <div class="col-5 mt-1 col-md-7 p-0 col-lg-7 bb-height-image-tall">           
+            </div>
+        </div>
+
+
     </div>
     <div class="row no-gutters mx-0 my-2 justify-content-center">
-    </div>
     </div>
 
     <!-- Footer -->
