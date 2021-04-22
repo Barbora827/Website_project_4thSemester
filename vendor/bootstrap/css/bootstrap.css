@@ -8568,6 +8568,11 @@ button.bg-dark:focus {
   .my-lg-0 {
     margin-top: 0 !important;
   }
+
+  .ml-lg-13{
+    margin-left: 13rem !important;
+  }
+
   .mr-lg-0,
   .mx-lg-0 {
     margin-right: 0 !important;

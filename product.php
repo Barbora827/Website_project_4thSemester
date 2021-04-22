@@ -39,18 +39,57 @@ if (isset($_GET['id'])) {
 ?>
 <?= template_header($product['name'], $meta) ?>
 
+<style>
+    @media (min-width: 992px) {
+
+  .ml-lg-13{
+    margin-left: 13rem !important;
+  }
+}
+
+#image-product{
+    height: 500px;
+    width: 500px;
+}
+
+.product-name{
+    font-size: 60px;
+}
+
+@media (max-width: 992px) {
+    #image-product {
+      height: 400px;
+      width: 400px;
+    }
+}
+
+@media (max-width: 1038px) {
+    .product-name{
+        font-size: 45px;
+    }
+}
+
+
+@media (max-width: 844px) {
+    .product-name{
+        font-size: 40px;
+    }
+}
+</style>
+
+
 
 <div class="product content-wrapper" id="bebas">
-    <div class="row mt-5 mx-0">
-        <div class="col-5">
-            <img class="product-img-large mb-5" src="<?= base_url ?>imgs/<?= $product['img'] ?>" style="width: 400px; height: 400px; margin-left: 230px;" alt="<?= $product['name'] ?>">
+    <div class="row flex-wrap mx-0" style="margin-top: 4rem;">
+        <div class="col col-xl px-0">
+            <img class="mt-3 mt-lg-0 mb-5 mx-5 ml-lg-13" id="image-product" src="<?= base_url ?>imgs/<?= $product['img'] ?>" alt="<?= $product['name'] ?>">
 
         </div>
 
-        <div class="col-5 ml-2">
-            <div class="product-wrapper">
+        <div class="col col-lg">
+            <div class="product-wrapper ml-4 ml-lg-0">
 
-                <h1 class="name" style="font-size: 60px;"><?= $product['name'] ?></h1>
+                <h1 class="product-name"><?= $product['name'] ?></h1>
 
                 <span class="price" style="font-size: 30px;">
                     <?= currency_code ?><?= number_format($product['price'], 2) ?>
@@ -93,52 +132,54 @@ if (isset($_GET['id'])) {
 
 <!-- Footer -->
 <footer class="bg-dark mt-5 text-center text-white">
-    <div class="container p-4">
+  <div class="container p-4">
+    
+    <!--Links -->
+    <section>
+      <div class="row justify-content-center" id="bebas">
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase" id="odkazy">Navigation</h5>
 
-        <!--Links -->
-        <section>
-            <div class="row justify-content-center" id="bebas">
-                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                    <h5 class="text-uppercase" id="odkazy">Navigace</h5>
+          <ul class="list-unstyled mb-0">
+            <li><a href="#!" class="text-links">Home</a></li>
+            <li><a href="#!" class="text-links">Products</a></li>
+            <li><a href="#!" class="text-links">Portfolio</a></li>
+            <li><a href="#!" class="text-links">Custom commission</a></li>
+            <li><a href="#!" class="text-links">Color swatch</a></li>
+          </ul>
+        </div>
 
-                    <ul class="list-unstyled mb-0">
-                        <li><a href="#!" class="text-links">Hlavní stránka</a></li>
-                        <li><a href="#!" class="text-links">Nabídka</a></li>
-                        <li><a href="#!" class="text-links">Portfolio</a></li>
-                        <li><a href="#!" class="text-links">Objednávkový formulář</a></li>
-                        <li><a href="#!" class="text-links">Napište nám</a></li>
-                    </ul>
-                </div>
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase" id="odkazy">Useful links</h5>
 
-                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                    <h5 class="text-uppercase" id="odkazy">Užitečné odkazy</h5>
+          <ul class="list-unstyled mb-0">
+            <li><a href="#!" class="text-links">Terms of use</a></li>
+            <li><a href="#!" class="text-links">Privacy policy</a></li>
+            <li><a href="#!" class="text-links">FAQ</a></li>
+            <li><a href="#!" class="text-links">How to order</a></li>
+            <li><a href="#!" class="text-links">Shipping</a></li>
+          </ul>
+        </div>
 
-                    <ul class="list-unstyled mb-0">
-                        <li><a href="#!" class="text-links">Podmínky užití</a></li>
-                        <li><a href="#!" class="text-links">Ochrana osobních údajů</a></li>
-                        <li><a href="#!" class="text-links">FAQ</a></li>
-                    </ul>
-                </div>
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase" id="odkazy">Contact us</h5>
 
-                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                    <h5 class="text-uppercase" id="odkazy">Kontakt</h5>
-
-                    <ul class="list-unstyled mb-0">
-                        <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/svatbyvpodhuri" style="padding-left: 13px; padding-right: 13px;" role="button"><i class="fa fa-facebook-f"></i></a>
-                        <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/svatbyvpodhuri" role="button"><i class="fa fa-instagram"></i></a>
-                        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fa fa-envelope"></i></a>
-                        <li><a href="#!" class="text-links">+420 721 046 729</a></li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-    </div>
+          <ul class="list-unstyled mb-0">
+            <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/svatbyvpodhuri" style="padding-left: 13px; padding-right: 13px;" role="button"><i class="fa fa-facebook-f"></i></a>
+            <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/svatbyvpodhuri" role="button"><i class="fa fa-instagram"></i></a>
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fa fa-envelope"></i></a>
+            <li><a href="#!" class="text-links">+420 721 046 729</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
 
 
-    <!-- Copyright -->
-    <div class="text-center p-3" id="kaushan" style="background-color: rgba(0, 0, 0, 0.2); color:#ddac8f; margin-bottom: -20px;">
-        © 2021 Svatby v podhůří
-    </div>
+  <!-- Copyright -->
+  <div class="text-center p-3" id="kaushan" style="background-color: rgba(0, 0, 0, 0.2); color:#ddac8f; margin-bottom: -20px;">
+    © 2021 Svatby v podhůří
+  </div>
 </footer>
 
 
