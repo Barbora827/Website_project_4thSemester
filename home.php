@@ -1,9 +1,5 @@
-<?php
-// Get the 4 most recently added products
-$stmt = $pdo->prepare('SELECT * FROM products ORDER BY date_added DESC LIMIT 4');
-$stmt->execute();
-$recently_added_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
-?>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -25,56 +21,61 @@ $recently_added_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </head>
 
 <body>
-    <!--Collapsing sidebar-->
-  <nav class="navbar navbar-expand-md" style="height: 60px;">
-    <div class="container mr-2 mr-sm-0">
-      <button class="btn btn-outline-dark navbar-toggler" id="side-toggler"
-        style="position: absolute; left: 15px; top: 20px;" type="button" data-toggle="collapse"
-        data-target="#sidebar-side" aria-expanded="false" aria-label="Toggle navigation">
-        <i class="fa fa-bars"></i>
-      </button>
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-md" style="height: 60px;">
+        <div class="container mr-2 mr-sm-0">
+            <button class="btn btn-outline-dark navbar-toggler" id="side-toggler"
+                style="position: absolute; left: 15px; top: 15px;" type="button" data-toggle="collapse"
+                data-target="#sidebar-side" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fa fa-bars"></i>
+            </button>
+            <button class="btn btn-outline-dark" id="shopcart">
+                <i class="fa fa-shopping-cart"></i>
+            </button>
 
-      <div class="collapse" id="sidebar-side" style="background-color: #f4f3ef;">
-        <div class="navbar-nav ml-auto">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link mb-1" id="mainnav-item" href="index.php">Home<span
-                  class="sr-only"></span></a>
-            </li>
-            <li class="nav-item my-1"><a class="nav-link" id="mainnav-item" href="index.html">About us<span
-                  class="sr-only"></span></a></li>
-            <li class="nav-item my-1"><a class="nav-link" id="mainnav-item" href="productlist.php">Products<span
-                  class="sr-only"></span></a></li>
-            <li class="nav-item my-1"><a class="nav-link" id="mainnav-item" href="portfolio.php">Portfolio<span
-                  class="sr-only"></span></a></li>
-            <li class="nav-item my-1"><a class="nav-link" id="mainnav-item" href="tutorial.php">How to order<span
-                  class="sr-only"></span></a></li>
-            <li class="nav-item my-1"><a class="nav-link" id="mainnav-item" href="contact.php">Contact us<span
-                  class="sr-only"></span></a></li>
-          </ul>
+            <!--Collapsing sidebar-->
+
+            <div class="collapse" id="sidebar-side" style="background-color: #f4f3ef;">
+                <div class="navbar-nav ml-auto">
+                    <ul class="navbar-nav">
+                        <li class="nav-item mb-1">
+                            <a class="nav-link" id="mainnav-item" href="index.html">Hlavní stránka<span
+                                    class="sr-only"></span></a>
+                        </li>
+                        <li class="nav-item my-1"><a class="nav-link" id="mainnav-item" href="index.html">O nás<span
+                                    class="sr-only"></span></a></li>
+                        <li class="nav-item my-1"><a class="nav-link" id="mainnav-item"
+                                href="portfolio.html">Portfolio<span class="sr-only"></span></a></li>
+                        <li class="nav-item my-1"><a class="nav-link" id="mainnav-item" href="nabidka.html">Nabídka<span
+                                    class="sr-only"></span></a></li>
+                        <li class="nav-item my-1"><a class="nav-link" id="mainnav-item" href="objednavka.html">Objednávka<span
+                                    class="sr-only"></span></a></li>
+                        <li class="nav-item my-1"><a class="nav-link" id="mainnav-item" href="kontakt.html">Kontakt<span
+                                    class="sr-only"></span></a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
-      </div>
-      <!--Collapsing sidebar-->
+        <!--Collapsing sidebar-->
 
-      <!--Main navbar-->
-      <div class="collapse navbar-collapse" id="playgroundsNavbar">
-        <div class="navbar-nav ml-auto">
-          <ul class="navbar-nav">
-          </ul>
+        <!--Main navbar-->
+        <div class="collapse navbar-collapse" id="playgroundsNavbar">
+            <div class="navbar-nav ml-auto">
+                <ul class="navbar-nav">
+                </ul>
+            </div>
         </div>
-      </div>
-    </div>
-  </nav>
-  <a class="btn btn-outline-dark btn-floating m-1 social-icon" id="socialicon-f" style="padding: 10px" href="https://www.facebook.com/svatbyvpodhuri" role="button"><i class="fa fa-facebook-f"></i></a>
-    <a class="btn btn-outline-dark btn-floating m-1 social-icon" id="socialicon-i" style="padding: 10px" href="https://www.instagram.com/svatbyvpodhuri" role="button"><i class="fa fa-instagram"></i></a>
-    <a class="btn btn-outline-dark btn-floating m-1 social-icon" id="socialicon-e" style="padding: 10px" href="#!" role="button"><i class="fa fa-envelope"></i></a>
-    <a href="index.php?page=cart"><button class="btn btn-outline-dark" style="padding: 10px 12px" id="shopcart">
-        <i class="fa fa-shopping-cart"></i>
-    </button></a>
+        </div>
+    </nav>
+    <a class="btn btn-outline-dark btn-floating m-1 social-icon" id="socialicon-f"
+        href="https://www.facebook.com/svatbyvpodhuri" role="button"><i class="fa fa-facebook-f"></i></a>
+    <a class="btn btn-outline-dark btn-floating m-1 social-icon" id="socialicon-i"
+        href="https://www.instagram.com/svatbyvpodhuri" role="button"><i class="fa fa-instagram"></i></a>
+    <a class="btn btn-outline-dark btn-floating m-1 social-icon" id="socialicon-e" href="#!" role="button"><i
+            class="fa fa-envelope"></i></a>
 
-
-<!-- Heading Container -->
-<div class="container text-center my-5">
+    <!-- Heading Container -->
+    <div class="container text-center my-5">
         <div class="row mx-0 justify-content-center">
             <div class="col-12 p-0 col-lg-9">
                 <img src="img/wallpaper.jpg" class="img-fluid" id="mainpic" style="height: 400px;">
@@ -85,29 +86,21 @@ $recently_added_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <div class="col-6 p-2 col-md p-0 col-lg-3">
                 <img src="img/Aesthetic-Trees-Sky-Afterglow-Branches-Clouds-3172763.jpg" class="img-fluid"
                     style="width: 100%;">
-                <a href="/webovky/portfolio.php"><span class="img-label">Portfolio</span></a>
+                <a href="/portfolio.html"><span class="img-label">Portfolio</span></a>
             </div>
             <div class="col-6 p-2 col-md mx-md-2 col-lg-3">
                 <img src="img/22bdb1d3453dca3120fa6c4294ca0d89.png" class="img-fluid" style="width: 100%;">
-                <a href="/webovky/productlist.php"><span class="img-label">Products</span></a>
+                <a href="productlist.php"><span class="img-label">Produkty</span></a>
             </div>
             <div class="col-6 my-2 p-0 mx-auto col-md mx-md-0 my-md-0 p-md-2 col-lg-3">
                 <img src="img/aesthetic-photography-3.jpg" class="img-fluid" style="width: 100%;">
-                <a href="/objednavka.html"><span class="img-label">How to order</span></a>
+                <a href="/objednavka.html"><span class="img-label" id="img-label-long">Objednávkový formulář</span></a>
             </div>
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
-        integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
-        crossorigin="anonymous"></script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-
-<!-- Footer -->
-<footer class="bg-dark mt-5 text-center text-white">
+    <!-- Footer -->
+    <footer class="bg-dark mt-5 text-center text-white">
         <div class="container p-4">
             <section class="mb-4">
 
@@ -129,29 +122,29 @@ $recently_added_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <section>
                 <div class="row justify-content-center" id="bebas">
                     <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                        <h5 class="text-uppercase" id="odkazy">Navigation</h5>
+                        <h5 class="text-uppercase" id="odkazy">Navigace</h5>
 
                         <ul class="list-unstyled mb-0">
-                            <li><a href="#!" class="text-links">Main page</a></li>
-                            <li><a href="#!" class="text-links">Products</a></li>
+                            <li><a href="#!" class="text-links">Hlavní stránka</a></li>
+                            <li><a href="#!" class="text-links">Nabídka</a></li>
                             <li><a href="#!" class="text-links">Portfolio</a></li>
-                            <li><a href="#!" class="text-links">Order</a></li>
-                            <li><a href="#!" class="text-links">Message us</a></li>
+                            <li><a href="#!" class="text-links">Objednávkový formulář</a></li>
+                            <li><a href="#!" class="text-links">Napište nám</a></li>
                         </ul>
                     </div>
 
                     <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                        <h5 class="text-uppercase" id="odkazy">Useful links</h5>
+                        <h5 class="text-uppercase" id="odkazy">Užitečné odkazy</h5>
 
                         <ul class="list-unstyled mb-0">
-                            <li><a href="#!" class="text-links">Terms of use</a></li>
-                            <li><a href="#!" class="text-links">Privacy policy</a></li>
+                            <li><a href="#!" class="text-links">Podmínky užití</a></li>
+                            <li><a href="#!" class="text-links">Ochrana osobních údajů</a></li>
                             <li><a href="#!" class="text-links">FAQ</a></li>
                         </ul>
                     </div>
 
                     <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                        <h5 class="text-uppercase" id="odkazy">Contact</h5>
+                        <h5 class="text-uppercase" id="odkazy">Kontakt</h5>
 
                         <ul class="list-unstyled mb-0">
                             <a class="btn btn-outline-light btn-floating m-1"
@@ -175,3 +168,15 @@ $recently_added_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
             © 2021 Svatby v podhůří
         </div>
     </footer>
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+        integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+        crossorigin="anonymous"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>

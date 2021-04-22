@@ -114,7 +114,7 @@ main .featured p {
 	font-size: 24px;
 	color: #FFFFFF;
 }
-main .recentlyadded h2 {
+main .product-card h2 {
 	display: block;
 	font-weight: normal;
 	margin: 0;
@@ -124,42 +124,43 @@ main .recentlyadded h2 {
 	width: 100%;
 	border-bottom: 1px solid #EEEEEE;
 }
-main .recentlyadded .products, main .products .products-wrapper {
+main .product-card .products, main .products .products-wrapper {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
 	justify-content: space-between;
 	padding: 40px 0 0 0;
 }
-main .recentlyadded .products .product, main .products .products-wrapper .product {
+
+main .product-card .products .product, main .products .products-wrapper .product {
 	display: block;
 	overflow: hidden;
 	text-decoration: none;
 	width: 25%;
 	padding-bottom: 60px;
 }
-main .recentlyadded .products .product img, main .products .products-wrapper .product img {
+main .product-card .products .product img, main .products .products-wrapper .product img {
 	transform: scale(1);
 	transition: transform 1s;
 }
-main .recentlyadded .products .product .name, main .products .products-wrapper .product .name {
+main .product-card .products .product .name, main .products .products-wrapper .product .name {
 	display: block;
 	color: #555555;
 	padding: 20px 0 2px 0;
 }
-main .recentlyadded .products .product .price, main .products .products-wrapper .product .price {
+main .product-card .products .product .price, main .products .products-wrapper .product .price {
 	display: block;
 	color: #999999;
 }
-main .recentlyadded .products .product .rrp, main .products .products-wrapper .product .rrp {
+main .product-card .products .product .rrp, main .products .products-wrapper .product .rrp {
 	color: #BBBBBB;
 	text-decoration: line-through;
 }
-main .recentlyadded .products .product:hover img, main .products .products-wrapper .product:hover img {
-	transform: scale(1.05);
+main .product-card .products .product:hover img, main .products .products-wrapper .product:hover img {
+	transform: scale(1.0);
 	transition: transform 1s;
 }
-main .recentlyadded .products .product:hover .name, main .products .products-wrapper .product:hover .name {
+main .product-card .products .product:hover .name, main .products .products-wrapper .product:hover .name {
 	text-decoration: underline;
 }
 main > .product {

@@ -3155,12 +3155,14 @@ fieldset:disabled a.btn {
   background-color: transparent;
   background-image: none;
   border-color: #343a40;
+  cursor:pointer;
 }
 
 .btn-outline-dark:hover {
   color: #ddac8f;
   background-color: #343a40;
   border-color: #343a40;
+  cursor: pointer;
 }
 
 .btn-outline-dark:focus, .btn-outline-dark.focus {
@@ -5023,6 +5025,7 @@ tbody.collapse.show {
   letter-spacing: 0.1rem;
   
   
+  
 }
 
 .breadcrumb-item + .breadcrumb-item::before {
@@ -5044,7 +5047,6 @@ tbody.collapse.show {
 .breadcrumb-item.active {
   color: #d69e7e;
 }
-
 
 ol > li > a {
   color:var(--dark);
