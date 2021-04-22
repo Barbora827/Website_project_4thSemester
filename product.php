@@ -1,3 +1,4 @@
+
 <?php
 
 // Check to make sure the id parameter is specified in the URL
@@ -75,15 +76,43 @@ if (isset($_GET['id'])) {
         font-size: 40px;
     }
 }
+
+.btn-outline-dark{
+    border-radius: 3px;
+}
+
+.btn-outline-beige{
+    background-color: #343a40;
+    color: #f4f3ef;
+    border-color: #343a40;
+    border-radius: 3px;
+}
+
+.btn-outline-beige:hover{
+    background-color: #343a40;
+    color: #ddac8f;
+    border-color: #343a40;
+    border-radius: 3px;
+
+}
 </style>
+
+
+<!--Breadcrumbs-->
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb ml-lg-13 ml-5 mt-5" id="bebas">
+      <li class="breadcrumb-item"><a href="index.php">Main page</a></li>
+      <li class="breadcrumb-item"><a href="productlist.php">Products</a></li>
+      <li class="breadcrumb-item active" aria-current="page"><?= $product['name'] ?></li>
+    </ol>
+  </nav>
 
 
 
 <div class="product content-wrapper" id="bebas">
-    <div class="row flex-wrap mx-0" style="margin-top: 4rem;">
+    <div class="row flex-wrap mx-0">
         <div class="col col-xl px-0">
             <img class="mt-3 mt-lg-0 mb-5 mx-5 ml-lg-13" id="image-product" src="<?= base_url ?>imgs/<?= $product['img'] ?>" alt="<?= $product['name'] ?>">
-
         </div>
 
         <div class="col col-lg">
@@ -96,13 +125,14 @@ if (isset($_GET['id'])) {
                     <?php if ($product['rrp'] > 0) : ?>
                         <span class="rrp"><?= currency_code ?><?= number_format($product['rrp'], 2) ?></span>
                     <?php endif; ?>
-                </span>
+                </span><br>
+                <button class="btn-outline-dark mt-3 mb-5" style="font-size: 20px; cursor:pointer;">Color swatches</button>
 
                 <form id="product-form" action="<?= url('index.php?page=cart') ?>" method="post">
                     <input class="mt-2 mr-1" type="number" name="quantity" value="1" min="1" <?php if ($product['quantity'] != -1) : ?>max="<?= $product['quantity'] ?>" <?php endif; ?> placeholder="Quantity" required>
                     <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
                     <?php foreach ($product_options as $option) : ?>
-                        <select name="option-<?= $option['title'] ?>" class="mt-3" style="font-size: 18px;" required>
+                        <select name="option-<?= $option['title'] ?>" class="mt-3 mb-2" style="font-size: 18px;" required>
                             <option value="" selected disabled style="display:none"><?= $option['title'] ?></option>
                             <?php
                             $options_names = explode(',', $option['options']);
@@ -117,7 +147,7 @@ if (isset($_GET['id'])) {
                     <?php if ($product['quantity'] == 0) : ?>
                         <input type="submit" value="Out of Stock" disabled>
                     <?php else : ?>
-                        <input type="submit" class="btn-outline-dark mt-2" style="font-size: 20px; cursor: pointer;" value="Add To Cart">
+                        <input type="submit" class="btn-outline-beige mt-2" style="font-size: 20px; cursor: pointer;" value="Add To Cart">
                     <?php endif; ?>
                 </form>
                 <div class="description mr-5 mt-3" id="bhavuka">

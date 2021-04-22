@@ -90,11 +90,11 @@
             </div>
             <div class="col-6 p-2 col-md mx-md-2 col-lg-3">
                 <img src="img/22bdb1d3453dca3120fa6c4294ca0d89.png" class="img-fluid" style="width: 100%;">
-                <a href="productlist.php"><span class="img-label">Produkty</span></a>
+                <a href="productlist.php"><span class="img-label">Products</span></a>
             </div>
             <div class="col-6 my-2 p-0 mx-auto col-md mx-md-0 my-md-0 p-md-2 col-lg-3">
                 <img src="img/aesthetic-photography-3.jpg" class="img-fluid" style="width: 100%;">
-                <a href="/objednavka.html"><span class="img-label" id="img-label-long">Objednávkový formulář</span></a>
+                <a href="/objednavka.html"><span class="img-label" id="img-label-long">How to order</span></a>
             </div>
         </div>
     </div>
