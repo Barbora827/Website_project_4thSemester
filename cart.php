@@ -1,6 +1,5 @@
 <?php
-// Prevent direct access to file
-defined('shoppingcart') or exit;
+
 // If the user clicked the add to cart button on the product page we can check for the form data
 if (isset($_POST['product_id'], $_POST['quantity']) && is_numeric($_POST['product_id']) && is_numeric($_POST['quantity'])) {
     // Set the post variables so we easily identify them, also make sure they are integer
@@ -11,10 +10,10 @@ if (isset($_POST['product_id'], $_POST['quantity']) && is_numeric($_POST['produc
     $options = '';
     $options_price = 0.00;
     foreach ($_POST as $k => $v) {
-        if (strpos($k, 'option-') !== false) {
-            $options .= str_replace('option-', '', $k) . '-' . $v . ',';
+        if (strpos($k, 'option') !== false) {
+            $options .= str_replace('option', '', $k). $v . ',';
             $stmt = $pdo->prepare('SELECT * FROM products_options WHERE title = ? AND name = ? AND product_id = ?');
-            $stmt->execute([ str_replace('option-', '', $k), $v, $product_id ]);
+            $stmt->execute([ str_replace('option', '', $k), $v, $product_id ]);
             $option = $stmt->fetch(PDO::FETCH_ASSOC);
             $options_price += $option['price'];
         }
@@ -80,16 +79,7 @@ if ((isset($_POST['update']) || isset($_POST['checkout'])) && isset($_SESSION['c
             }
         }
     }
-    // Update shipping method
-    if (isset($_POST['shipping_method'])) {
-        $_SESSION['shipping_method'] = $_POST['shipping_method'];
-    }
-    // Update discount code
-    if (isset($_POST['discount_code']) && !empty($_POST['discount_code'])) {
-        $_SESSION['discount'] = $_POST['discount_code'];
-    } else if (isset($_POST['discount_code']) && empty($_POST['discount_code']) && isset($_SESSION['discount'])) {
-        unset($_SESSION['discount']);
-    }
+
     // Send the user to the place order page if they click the Place Order button, also the cart should not be empty
     if (isset($_POST['checkout']) && !empty($_SESSION['cart'])) {
         header('Location: ' . url('index.php?page=checkout'));
@@ -144,19 +134,32 @@ if ($products_in_cart) {
 ?>
 <?=template_header('Shopping Cart')?>
 
+<style>
+.remove{
+    font-size: 18px;
+    color: #800020;
+}
+.remove:hover{
+    color: #ca0033;
+    text-decoration: none;
+}
+
+
+</style>
 <div class="cart content-wrapper">
 
-    <h1>Shopping Cart</h1>
+    <h1 class="text-center my-5">Shopping Cart</h1>
+    <div class="row justify-content-center">
 
     <form action="" method="post">
-        <table>
-            <thead>
+        <table class="table-danger table-bordered mx-0">
+            <thead class="table-dark" style="font-size: 30px;">
                 <tr>
-                    <td colspan="2">Product</td>
-                    <td></td>
-                    <td class="rhide">Price</td>
-                    <td>Quantity</td>
-                    <td>Total</td>
+                    <td class="text-center px-5" colspan="2">Product</td>
+                    <td class="text-center px-5">Color</td>
+                    <td class="rhide text-center px-5">Price</td>
+                    <td class="text-center px-5">Quantity</td>
+                    <td class="text-center px-5">Total</td>
                 </tr>
             </thead>
             <tbody>
@@ -170,32 +173,24 @@ if ($products_in_cart) {
                     <td class="img">
                         <?php if (!empty($product['meta']['img']) && file_exists('imgs/' . $product['meta']['img'])): ?>
                         <a href="<?=url('index.php?page=product&id=' . $product['id'])?>">
-                            <img src="<?=base_url?>imgs/<?=$product['meta']['img']?>" width="50" height="50" alt="<?=$product['meta']['name']?>">
+                            <img src="<?=base_url?>imgs/<?=$product['meta']['img']?>" style="height: 150px; width: 150px;" alt="<?=$product['meta']['name']?>">
                         </a>
                         <?php endif; ?>
                     </td>
                     <td>
-                        <a href="<?=url('index.php?page=product&id=' . $product['id'])?>"><?=$product['meta']['name']?></a>
+                        <a href="<?=url('index.php?page=product&id=' . $product['id'])?>" id="bebas" class="px-2" style="font-size: 18px; color: #343e40"><?=$product['meta']['name']?></a>
                         <br>
-                        <a href="<?=url('index.php?page=cart&remove=' . $num)?>" class="remove">Remove</a>
+                        <a href="<?=url('index.php?page=cart&remove=' . $num)?>" id="bebas" class="px-2 remove">Remove</a>
                     </td>
-                    <td class="price">
+                    <td class="price px-2" id="bebas" style="font-size: 18px; text-align: center">
                         <?=$product['options']?>
                         <input type="hidden" name="options" value="<?=$product['options']?>">
                     </td>
-                    <?php if ($product['options_price'] > 0): ?>
-                    <td class="price rhide"><?=currency_code?><?=number_format($product['options_price'],2)?></td>
-                    <?php else: ?>
-                    <td class="price rhide"><?=currency_code?><?=number_format($product['meta']['price'],2)?></td>
-                    <?php endif; ?>
-                    <td class="quantity">
+                    <td class="price rhide" id="bebas" style="font-size: 22px; text-align: center"><?=currency_code?><?=number_format($product['meta']['price'],2)?></td>
+                    <td class="quantity text-center" id="bebas">
                         <input type="number" class="ajax-update" name="quantity-<?=$num?>" value="<?=$product['quantity']?>" min="1" <?php if ($product['meta']['quantity'] != -1): ?>max="<?=$product['meta']['quantity']?>"<?php endif; ?> placeholder="Quantity" required>
                     </td>
-                    <?php if ($product['options_price'] > 0): ?>
-                    <td class="price product-total"><?=currency_code?><?=number_format($product['options_price'] * $product['quantity'],2)?></td>
-                    <?php else: ?>
-                    <td class="price product-total"><?=currency_code?><?=number_format($product['meta']['price'] * $product['quantity'],2)?></td>
-                    <?php endif; ?>
+                    <td class="price product-total text-center" id="bebas" style="font-size: 22px; text-align: center"><?=currency_code?><?=number_format($product['meta']['price'] * $product['quantity'],2)?></td>
                 </tr>
                 <?php endforeach; ?>
                 <?php endif; ?>

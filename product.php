@@ -132,11 +132,10 @@ if (isset($_GET['id'])) {
                     <input class="mt-2 mr-1" type="number" name="quantity" value="1" min="1" <?php if ($product['quantity'] != -1) : ?>max="<?= $product['quantity'] ?>" <?php endif; ?> placeholder="Quantity" required>
                     <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
                     <?php foreach ($product_options as $option) : ?>
-                        <select name="option-<?= $option['title'] ?>" class="mt-3 mb-2" style="font-size: 18px;" required>
+                        <select name="option" class="mt-3 mb-2" style="font-size: 18px;" required>
                             <option value="" selected disabled style="display:none"><?= $option['title'] ?></option>
                             <?php
                             $options_names = explode(',', $option['options']);
-                            $options_prices = explode(',', $option['prices']);
                             ?>
                             <?php foreach ($options_names as $k => $name) : ?>
                                 <option value="<?= $name ?>" data-price="<?= $options_prices[$k] ?>"><?= $name ?></option>
