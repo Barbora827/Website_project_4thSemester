@@ -3,8 +3,8 @@
 // Check to make sure the id parameter is specified in the URL
 if (isset($_GET['id'])) {
   // Prepare statement and execute, prevents SQL injection
-  $stmt = $pdo->prepare('SELECT * FROM products WHERE id = ? OR url_structure = ?');
-  $stmt->execute([$_GET['id'], $_GET['id']]);
+  $stmt = $pdo->prepare('SELECT * FROM products WHERE id = ?');
+  $stmt->execute([$_GET['id']]);
   // Fetch the product from the database and return the result as an Array
   $product = $stmt->fetch(PDO::FETCH_ASSOC);
   // Check if the product exists (array is not empty)
@@ -110,9 +110,6 @@ if (isset($_GET['id'])) {
 
         <span class="price" style="font-size: 30px;">
           <?= currency_code ?><?= number_format($product['price'], 2) ?>
-          <?php if ($product['rrp'] > 0) : ?>
-            <span class="rrp"><?= currency_code ?><?= number_format($product['rrp'], 2) ?></span>
-          <?php endif; ?>
         </span><br>
         <button class="btn-outline-dark mt-3 mb-5" style="font-size: 20px; cursor:pointer;">Color swatches</button>
 
@@ -185,7 +182,7 @@ if (isset($_GET['id'])) {
             <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/svatbyvpodhuri" style="padding-left: 13px; padding-right: 13px;" role="button"><i class="fa fa-facebook-f"></i></a>
             <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/svatbyvpodhuri" role="button"><i class="fa fa-instagram"></i></a>
             <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fa fa-envelope"></i></a>
-            <li><a href="#!" class="text-links">+420 721 046 729</a></li>
+             <li class="text-links">+420 721 046 729</li>
           </ul>
         </div>
       </div>

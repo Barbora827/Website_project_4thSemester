@@ -89,20 +89,20 @@ function template_header($title, $head = '')
                 <div class="navbar-nav ml-auto">
                     <ul class="navbar-nav">
                         <li class="nav-item mb-1">
-                            <a class="nav-link" id="mainnav-item" href="index.html">Home<span
+                            <a class="nav-link" id="mainnav-item" href="index.php">Home<span
                                     class="sr-only"></span></a>
                         </li>
-                        <li class="nav-item my-1"><a class="nav-link" id="mainnav-item" href="index.html">About us<span
+                        <li class="nav-item"><a class="nav-link" id="mainnav-item" href="about.php">About us<span
                                     class="sr-only"></span></a></li>
-                        <li class="nav-item my-1"><a class="nav-link" id="mainnav-item" href="productlist.php">Products<span
+                        <li class="nav-item"><a class="nav-link" id="mainnav-item" href="productlist.php">Products<span
                                     class="sr-only"></span></a></li>
-                        <li class="nav-item my-1"><a class="nav-link" id="mainnav-item" href="objednavka.html">Portfolio<span
+                        <li class="nav-item"><a class="nav-link" id="mainnav-item" href="portfolio.php">Portfolio<span
                                     class="sr-only"></span></a></li>
-                        <li class="nav-item my-1"><a class="nav-link" id="mainnav-item" href="kontakt.html">Color swatch<span
+                        <li class="nav-item"><a class="nav-link" id="mainnav-item" href="colors.php">Color swatch<span
                                     class="sr-only"></span></a></li>
-                        <li class="nav-item my-1"><a class="nav-link" id="mainnav-item" href="nabidka.html">How to order<span
+                        <li class="nav-item"><a class="nav-link" id="mainnav-item" href="howto.php">How to order<span
                                     class="sr-only"></span></a></li>
-                        <li class="nav-item my-1"><a class="nav-link" id="mainnav-item" href="kontakt.html">Contact us<span
+                        <li class="nav-item"><a class="nav-link" id="mainnav-item" href="contact.php">Contact us<span
                                     class="sr-only"></span></a></li>
                     </ul>
                 </div>

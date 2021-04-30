@@ -35,14 +35,13 @@
                 <div class="navbar-nav ml-auto">
                     <ul class="navbar-nav">
                         <li class="nav-item mb-1">
-                            <a class="nav-link" id="mainnav-item" href="index.html">Home<span class="sr-only"></span></a>
+                            <a class="nav-link" id="mainnav-item" href="index.html">Hlavní stránka<span class="sr-only"></span></a>
                         </li>
-                        <li class="nav-item"><a class="nav-link" id="mainnav-item" href="about.php">About us<span class="sr-only"></span></a></li>
-                        <li class="nav-item"><a class="nav-link" id="mainnav-item" href="productlist.php">Products<span class="sr-only"></span></a></li>
-                        <li class="nav-item"><a class="nav-link" id="mainnav-item" href="portfolio.php">Portfolio<span class="sr-only"></span></a></li>
-                        <li class="nav-item"><a class="nav-link" id="mainnav-item" href="colors.php">Color swatch<span class="sr-only"></span></a></li>
-                        <li class="nav-item"><a class="nav-link" id="mainnav-item" href="howto.php">How to order<span class="sr-only"></span></a></li>
-                        <li class="nav-item"><a class="nav-link" id="mainnav-item" href="contact.php">Contact us<span class="sr-only"></span></a></li>
+                        <li class="nav-item my-1"><a class="nav-link" id="mainnav-item" href="index.html">O nás<span class="sr-only"></span></a></li>
+                        <li class="nav-item my-1"><a class="nav-link" id="mainnav-item" href="portfolio.html">Portfolio<span class="sr-only"></span></a></li>
+                        <li class="nav-item my-1"><a class="nav-link" id="mainnav-item" href="nabidka.html">Nabídka<span class="sr-only"></span></a></li>
+                        <li class="nav-item my-1"><a class="nav-link" id="mainnav-item" href="objednavka.html">Objednávka<span class="sr-only"></span></a></li>
+                        <li class="nav-item my-1"><a class="nav-link" id="mainnav-item" href="kontakt.html">Kontakt<span class="sr-only"></span></a></li>
                     </ul>
                 </div>
             </div>
@@ -50,6 +49,12 @@
         <!--Collapsing sidebar-->
 
         <!--Main navbar-->
+        <div class="collapse navbar-collapse" id="playgroundsNavbar">
+            <div class="navbar-nav ml-auto">
+                <ul class="navbar-nav">
+                </ul>
+            </div>
+        </div>
         </div>
     </nav>
     <a class="btn btn-outline-dark btn-floating m-1 social-icon" id="socialicon-f" href="https://www.facebook.com/svatbyvpodhuri" role="button"><i class="fa fa-facebook-f"></i></a>
@@ -81,57 +86,57 @@
     </div>
 
 
-    <!-- Footer -->
-    <footer class="bg-dark mt-5 text-center text-white">
-        <div class="container p-4">
+   <!-- Footer -->
+<footer class="bg-dark mt-5 text-center text-white">
+    <div class="container p-4">
 
-            <!--Links -->
-            <section>
-                <div class="row justify-content-center" id="bebas">
-                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                        <h5 class="text-uppercase" id="odkazy">Navigation</h5>
+        <!--Links -->
+        <section>
+            <div class="row justify-content-center" id="bebas">
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase" id="odkazy">Navigation</h5>
 
-                        <ul class="list-unstyled mb-0">
-                            <li><a href="index.php" class="text-links">Home</a></li>
-                            <li><a href="about.php" class="text-links">About us</a></li>
-                            <li><a href="productlist.php" class="text-links">Products</a></li>
-                            <li><a href="portfolio.php" class="text-links">Portfolio</a></li>
-                            <li><a href="colors.php" class="text-links">Color swatch</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                        <h5 class="text-uppercase" id="odkazy">Useful links</h5>
-
-                        <ul class="list-unstyled mb-0">
-                            <li><a href="terms.php" class="text-links">Terms of use</a></li>
-                            <li><a href="privacy.php" class="text-links">Privacy policy</a></li>
-                            <li><a href="faq.php" class="text-links">FAQ</a></li>
-                            <li><a href="howto.php" class="text-links">How to order</a></li>
-                            <li><a href="shipping.php" class="text-links">Shipping</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                        <h5 class="text-uppercase" id="odkazy">Contact us</h5>
-
-                        <ul class="list-unstyled mb-0">
-                            <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/svatbyvpodhuri" style="padding-left: 13px; padding-right: 13px;" role="button"><i class="fa fa-facebook-f"></i></a>
-                            <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/svatbyvpodhuri" role="button"><i class="fa fa-instagram"></i></a>
-                            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fa fa-envelope"></i></a>
-                            <li class="text-links">+420 721 046 729</li>
-                        </ul>
-                    </div>
+                    <ul class="list-unstyled mb-0">
+                        <li><a href="index.php" class="text-links">Home</a></li>
+                        <li><a href="about.php" class="text-links">About us</a></li>
+                        <li><a href="productlist.php" class="text-links">Products</a></li>
+                        <li><a href="portfolio.php" class="text-links">Portfolio</a></li>
+                        <li><a href="colors.php" class="text-links">Color swatch</a></li>
+                    </ul>
                 </div>
-            </section>
-        </div>
+
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase" id="odkazy">Useful links</h5>
+
+                    <ul class="list-unstyled mb-0">
+                        <li><a href="terms.php" class="text-links">Terms of use</a></li>
+                        <li><a href="privacy.php" class="text-links">Privacy policy</a></li>
+                        <li><a href="faq.php" class="text-links">FAQ</a></li>
+                        <li><a href="howto.php" class="text-links">How to order</a></li>
+                        <li><a href="shipping.php" class="text-links">Shipping</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase" id="odkazy">Contact us</h5>
+
+                    <ul class="list-unstyled mb-0">
+                        <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/svatbyvpodhuri" style="padding-left: 13px; padding-right: 13px;" role="button"><i class="fa fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/svatbyvpodhuri" role="button"><i class="fa fa-instagram"></i></a>
+                        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fa fa-envelope"></i></a>
+                         <li class="text-links">+420 721 046 729</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
 
 
-        <!-- Copyright -->
-        <div class="text-center p-3" id="kaushan" style="background-color: rgba(0, 0, 0, 0.2); color:#ddac8f; margin-bottom: -20px;">
-            © 2021 Svatby v podhůří
-        </div>
-    </footer>
+    <!-- Copyright -->
+    <div class="text-center p-3" id="kaushan" style="background-color: rgba(0, 0, 0, 0.2); color:#ddac8f; margin-bottom: -20px;">
+        © 2021 Svatby v podhůří
+    </div>
+</footer>
 
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

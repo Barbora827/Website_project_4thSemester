@@ -64,6 +64,13 @@ if (isset($_POST['emptycart']) && isset($_SESSION['cart'])) {
     header('location: ' . url('index.php?page=cart'));
     exit;
 }
+
+// Redirect back to productlist to "Continue shopping"
+if (isset($_POST['shopping']) && isset($_SESSION['cart'])) {
+    header('location: ' . url('productlist.php'));
+    exit;
+}
+
 // Update product quantities in cart if the user clicks the "Update" button on the shopping cart page
 if ((isset($_POST['update']) || isset($_POST['checkout'])) && isset($_SESSION['cart'])) {
     // Iterate the post data and update quantities for every product in cart
@@ -91,10 +98,6 @@ if ((isset($_POST['update']) || isset($_POST['checkout'])) && isset($_SESSION['c
 // Check the session variable for products in cart
 $products_in_cart = isset($_SESSION['cart']) ? $_SESSION['cart'] : [];
 $subtotal = 0.00;
-$discounttotal = 0.00;
-$shippingtotal = 0.00;
-$selected_shipping_method = isset($_SESSION['shipping_method']) ? $_SESSION['shipping_method'] : null;
-$shipping_available = false;
 // If there are products in cart
 if ($products_in_cart) {
     // There are products in the cart so we need to select those products from the database
@@ -105,18 +108,10 @@ if ($products_in_cart) {
     $stmt->execute(array_column($products_in_cart, 'id'));
     // Fetch the products from the database and return the result as an Array
     $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    // Retrieve the discount code
-    if (isset($_SESSION['discount'])) {
-        $stmt = $pdo->prepare('SELECT * FROM discounts WHERE discount_code = ?');
-        $stmt->execute([$_SESSION['discount']]);
-        $discount = $stmt->fetch(PDO::FETCH_ASSOC);
-    }
+    
     // Get the current date
     $current_date = strtotime((new DateTime())->format('Y-m-d H:i:s'));
-    // Retrieve shipping methods
-    $stmt = $pdo->query('SELECT * FROM shipping');
-    $shipping_methods = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    $selected_shipping_method = $selected_shipping_method == null && $shipping_methods ? $shipping_methods[0]['name'] : $selected_shipping_method;
+    
     // Iterate the products in cart and add the meta data (product name, desc, etc)
     foreach ($products_in_cart as &$cart_product) {
         foreach ($products as $product) {
@@ -169,20 +164,20 @@ if ($products_in_cart) {
     <h1 class="text-center my-5">Shopping Cart</h1>
     <div class="row justify-content-center mx-0">
         <form action="" method="post">
-            <table class="table-bordered mx-0">
+            <table class="table-responsive table-bordered mx-0">
                 <thead class="table-dark" id="tableheader">
                     <tr>
-                        <td class="text-center px-lg-5 px-md-3" colspan="2">Product</td>
-                        <td class="text-center px-lg-5 px-md-3">Color</td>
-                        <td class="text-center px-lg-5 px-md-3">Price</td>
-                        <td class="text-center px-lg-5 px-md-3">Quantity</td>
-                        <td class="text-center px-lg-5 px-md-3">Total</td>
+                        <td class="text-center px-5 px-lg-5" colspan="2">Product</td>
+                        <td class="text-center px-4 px-lg-5">Color</td>
+                        <td class="text-center px-4 px-lg-5">Price</td>
+                        <td class="text-center px-4 px-lg-5">Quantity</td>
+                        <td class="text-center px-4 px-lg-5">Total</td>
                     </tr>
                 </thead>
                 <tbody>
                     <?php if (empty($products_in_cart)) : ?>
                         <tr>
-                            <td colspan="6" style="text-align:center;">You have no products added in your Shopping Cart</td>
+                            <td colspan="6" id="bebas" class="py-3" style="text-align:center; font-size: 20px">You have no products added in your Shopping Cart</td>
                         </tr>
                     <?php else : ?>
                         <?php foreach ($products_in_cart as $num => $product) : ?>
@@ -274,7 +269,7 @@ if ($products_in_cart) {
                         <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/svatbyvpodhuri" style="padding-left: 13px; padding-right: 13px;" role="button"><i class="fa fa-facebook-f"></i></a>
                         <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/svatbyvpodhuri" role="button"><i class="fa fa-instagram"></i></a>
                         <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fa fa-envelope"></i></a>
-                        <li><a href="#!" class="text-links">+420 721 046 729</a></li>
+                         <li class="text-links">+420 721 046 729</li>
                     </ul>
                 </div>
             </div>
