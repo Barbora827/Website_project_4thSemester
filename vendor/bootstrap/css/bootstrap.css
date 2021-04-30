@@ -9352,4 +9352,14 @@ input:-webkit-autofill:active
   font-family: 'Bebas Neue', cursive;
 }
 
+#tableheader{
+  font-size: 2rem;
+}
+
+@media (max-width: 991.98px) {
+  #tableheader{
+    font-size: 1rem;
+  }
+}
+
 /*# sourceMappingURL=bootstrap.css.map */

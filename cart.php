@@ -11,9 +11,9 @@ if (isset($_POST['product_id'], $_POST['quantity']) && is_numeric($_POST['produc
     $options_price = 0.00;
     foreach ($_POST as $k => $v) {
         if (strpos($k, 'option') !== false) {
-            $options .= str_replace('option', '', $k). $v . ',';
+            $options .= str_replace('option', '', $k) . $v . ',';
             $stmt = $pdo->prepare('SELECT * FROM products_options WHERE title = ? AND name = ? AND product_id = ?');
-            $stmt->execute([ str_replace('option', '', $k), $v, $product_id ]);
+            $stmt->execute([str_replace('option', '', $k), $v, $product_id]);
             $option = $stmt->fetch(PDO::FETCH_ASSOC);
             $options_price += $option['price'];
         }
@@ -21,7 +21,7 @@ if (isset($_POST['product_id'], $_POST['quantity']) && is_numeric($_POST['produc
     $options = rtrim($options, ',');
     // Prepare the SQL statement, we basically are checking if the product exists in our database
     $stmt = $pdo->prepare('SELECT * FROM products WHERE id = ?');
-    $stmt->execute([ $_POST['product_id'] ]);
+    $stmt->execute([$_POST['product_id']]);
     // Fetch the product from the database and return the result as an Array
     $product = $stmt->fetch(PDO::FETCH_ASSOC);
     // Check if the product exists (array is not empty)
@@ -108,7 +108,7 @@ if ($products_in_cart) {
     // Retrieve the discount code
     if (isset($_SESSION['discount'])) {
         $stmt = $pdo->prepare('SELECT * FROM discounts WHERE discount_code = ?');
-        $stmt->execute([ $_SESSION['discount'] ]);
+        $stmt->execute([$_SESSION['discount']]);
         $discount = $stmt->fetch(PDO::FETCH_ASSOC);
     }
     // Get the current date
@@ -121,98 +121,175 @@ if ($products_in_cart) {
     foreach ($products_in_cart as &$cart_product) {
         foreach ($products as $product) {
             if ($cart_product['id'] == $product['id']) {
-                $cart_product['meta'] = $product;
+                $cart_product['product'] = $product;
                 // Calculate the subtotal
                 $product_price = $cart_product['options_price'] > 0 ? (float)$cart_product['options_price'] : (float)$product['price'];
                 $subtotal += $product_price * (int)$cart_product['quantity'];
-              
             }
         }
     }
-   
 }
 ?>
-<?=template_header('Shopping Cart')?>
+<?= template_header('Shopping Cart') ?>
 
 <style>
-.remove{
-    font-size: 18px;
-    color: #800020;
-}
-.remove:hover{
-    color: #ca0033;
-    text-decoration: none;
-}
+    .remove {
+        font-size: 18px;
+        color: #800020;
+    }
 
+    .remove:hover {
+        color: #ca0033;
+        text-decoration: none;
+    }
 
+    #tableheader {
+        font-size: 2rem;
+    }
+
+    @media (max-width: 991.98px) {
+        #tableheader {
+            font-size: 1.5rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        #tableheader {
+            font-size: 1rem;
+        }
+    }
+
+    .subtotal {
+        text-align: right;
+        padding-right: 30px;
+    }
 </style>
 <div class="cart content-wrapper">
 
     <h1 class="text-center my-5">Shopping Cart</h1>
-    <div class="row justify-content-center">
-
-    <form action="" method="post">
-        <table class="table-danger table-bordered mx-0">
-            <thead class="table-dark" style="font-size: 30px;">
-                <tr>
-                    <td class="text-center px-5" colspan="2">Product</td>
-                    <td class="text-center px-5">Color</td>
-                    <td class="rhide text-center px-5">Price</td>
-                    <td class="text-center px-5">Quantity</td>
-                    <td class="text-center px-5">Total</td>
-                </tr>
-            </thead>
-            <tbody>
-                <?php if (empty($products_in_cart)): ?>
-                <tr>
-                    <td colspan="6" style="text-align:center;">You have no products added in your Shopping Cart</td>
-                </tr>
-                <?php else: ?>
-                <?php foreach ($products_in_cart as $num => $product): ?>
-                <tr>
-                    <td class="img">
-                        <?php if (!empty($product['meta']['img']) && file_exists('imgs/' . $product['meta']['img'])): ?>
-                        <a href="<?=url('index.php?page=product&id=' . $product['id'])?>">
-                            <img src="<?=base_url?>imgs/<?=$product['meta']['img']?>" style="height: 150px; width: 150px;" alt="<?=$product['meta']['name']?>">
-                        </a>
-                        <?php endif; ?>
-                    </td>
-                    <td>
-                        <a href="<?=url('index.php?page=product&id=' . $product['id'])?>" id="bebas" class="px-2" style="font-size: 18px; color: #343e40"><?=$product['meta']['name']?></a>
-                        <br>
-                        <a href="<?=url('index.php?page=cart&remove=' . $num)?>" id="bebas" class="px-2 remove">Remove</a>
-                    </td>
-                    <td class="price px-2" id="bebas" style="font-size: 18px; text-align: center">
-                        <?=$product['options']?>
-                        <input type="hidden" name="options" value="<?=$product['options']?>">
-                    </td>
-                    <td class="price rhide" id="bebas" style="font-size: 22px; text-align: center"><?=currency_code?><?=number_format($product['meta']['price'],2)?></td>
-                    <td class="quantity text-center" id="bebas">
-                        <input type="number" class="ajax-update" name="quantity-<?=$num?>" value="<?=$product['quantity']?>" min="1" <?php if ($product['meta']['quantity'] != -1): ?>max="<?=$product['meta']['quantity']?>"<?php endif; ?> placeholder="Quantity" required>
-                    </td>
-                    <td class="price product-total text-center" id="bebas" style="font-size: 22px; text-align: center"><?=currency_code?><?=number_format($product['meta']['price'] * $product['quantity'],2)?></td>
-                </tr>
-                <?php endforeach; ?>
-                <?php endif; ?>
-            </tbody>
-        </table>
-
-        
-
-        <div class="subtotal">
-            <span class="text">Total</span>
-            <span class="price"><?=currency_code?><?=number_format($subtotal,2)?></span>
-        </div>
+    <div class="row justify-content-center mx-0">
+        <form action="" method="post">
+            <table class="table-bordered mx-0">
+                <thead class="table-dark" id="tableheader">
+                    <tr>
+                        <td class="text-center px-lg-5 px-md-3" colspan="2">Product</td>
+                        <td class="text-center px-lg-5 px-md-3">Color</td>
+                        <td class="text-center px-lg-5 px-md-3">Price</td>
+                        <td class="text-center px-lg-5 px-md-3">Quantity</td>
+                        <td class="text-center px-lg-5 px-md-3">Total</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php if (empty($products_in_cart)) : ?>
+                        <tr>
+                            <td colspan="6" style="text-align:center;">You have no products added in your Shopping Cart</td>
+                        </tr>
+                    <?php else : ?>
+                        <?php foreach ($products_in_cart as $num => $product) : ?>
+                            <tr>
+                                <td class="img">
+                                    <?php if (!empty($product['product']['img']) && file_exists('imgs/' . $product['product']['img'])) : ?>
+                                        <a href="<?= url('index.php?page=product&id=' . $product['id']) ?>">
+                                            <img src="<?= base_url ?>imgs/<?= $product['product']['img'] ?>" style="height: 150px; width: 150px;" alt="<?= $product['product']['name'] ?>">
+                                        </a>
+                                    <?php endif; ?>
+                                </td>
+                                <td>
+                                    <a href="<?= url('index.php?page=product&id=' . $product['id']) ?>" id="bebas" class="px-2" style="font-size: 18px; color: #343e40"><?= $product['product']['name'] ?></a>
+                                    <br>
+                                    <a href="<?= url('index.php?page=cart&remove=' . $num) ?>" id="bebas" class="px-2 remove">Remove</a>
+                                </td>
+                                <td class="price px-2" id="bebas" style="font-size: 18px; text-align: center">
+                                    <?= $product['options'] ?>
+                                    <input type="hidden" name="options" value="<?= $product['options'] ?>">
+                                </td>
+                                <td class="price" id="bebas" style="font-size: 22px; text-align: center"><?= currency_code ?><?= number_format($product['product']['price'], 2) ?></td>
+                                <td class="quantity text-center" id="bebas">
+                                    <input type="number" class="ajax-update" name="quantity-<?= $num ?>" value="<?= $product['quantity'] ?>" min="1" <?php if ($product['product']['quantity'] != -1) : ?>max="<?= $product['product']['quantity'] ?>" <?php endif; ?> placeholder="Quantity" required>
+                                </td>
+                                <td class="price product-total text-center" id="bebas" style="font-size: 22px; text-align: center"><?= currency_code ?><?= number_format($product['product']['price'] * $product['quantity'], 2) ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                </tbody>
+            </table>
 
 
 
-        <div class="buttons mt-5">
-            <input type="submit" value="Update" name="update">
-            <input type="submit" value="Empty Cart" name="emptycart">
-            <input type="submit" value="Checkout" name="checkout">
-        </div>
+            <div class="subtotal mt-3" id="bebas" style="font-size: 25px">
+                <span class="text">Total</span>
+                <span class="price"><?= currency_code ?><?= number_format($subtotal, 2) ?></span>
+            </div>
 
-    </form>
 
-</div>
+            <div class="buttons my-5" id="bebas" style="float:right">
+                <input type="submit" value="Continue shopping" name="shopping">
+                <input type="submit" value="Update cart" name="update">
+                <input type="submit" value="Empty cart" name="emptycart">
+                <input type="submit" value="Checkout" name="checkout">
+            </div>
 
+
+        </form>
+
+
+    </div>
+    </main>
+
+   <!-- Footer -->
+<footer class="bg-dark mt-5 text-center text-white">
+    <div class="container p-4">
+
+        <!--Links -->
+        <section>
+            <div class="row justify-content-center" id="bebas">
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase" id="odkazy">Navigation</h5>
+
+                    <ul class="list-unstyled mb-0">
+                        <li><a href="index.php" class="text-links">Home</a></li>
+                        <li><a href="about.php" class="text-links">About us</a></li>
+                        <li><a href="productlist.php" class="text-links">Products</a></li>
+                        <li><a href="portfolio.php" class="text-links">Portfolio</a></li>
+                        <li><a href="colors.php" class="text-links">Color swatch</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase" id="odkazy">Useful links</h5>
+
+                    <ul class="list-unstyled mb-0">
+                        <li><a href="terms.php" class="text-links">Terms of use</a></li>
+                        <li><a href="privacy.php" class="text-links">Privacy policy</a></li>
+                        <li><a href="faq.php" class="text-links">FAQ</a></li>
+                        <li><a href="howto.php" class="text-links">How to order</a></li>
+                        <li><a href="shipping.php" class="text-links">Shipping</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase" id="odkazy">Contact us</h5>
+
+                    <ul class="list-unstyled mb-0">
+                        <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/svatbyvpodhuri" style="padding-left: 13px; padding-right: 13px;" role="button"><i class="fa fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/svatbyvpodhuri" role="button"><i class="fa fa-instagram"></i></a>
+                        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fa fa-envelope"></i></a>
+                        <li><a href="#!" class="text-links">+420 721 046 729</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+    <!-- Copyright -->
+    <div class="text-center p-3" id="kaushan" style="background-color: rgba(0, 0, 0, 0.2); color:#ddac8f; margin-bottom: -20px;">
+        © 2021 Svatby v podhůří
+    </div>
+</footer>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
