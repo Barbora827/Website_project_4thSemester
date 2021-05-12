@@ -40,7 +40,7 @@
                         <li class="nav-item"><a class="nav-link" id="mainnav-item" href="about.php">About us<span class="sr-only"></span></a></li>
                         <li class="nav-item"><a class="nav-link" id="mainnav-item" href="productlist.php">Products<span class="sr-only"></span></a></li>
                         <li class="nav-item"><a class="nav-link" id="mainnav-item" href="portfolio.php">Portfolio<span class="sr-only"></span></a></li>
-                        <li class="nav-item"><a class="nav-link" id="mainnav-item" href="colors.php">Color swatch<span class="sr-only"></span></a></li>
+                        <li class="nav-item"><a class="nav-link" id="mainnav-item" href="index.php?page=colors">Color swatch<span class="sr-only"></span></a></li>
                         <li class="nav-item"><a class="nav-link" id="mainnav-item" href="howto.php">How to order<span class="sr-only"></span></a></li>
                         <li class="nav-item"><a class="nav-link" id="mainnav-item" href="contact.php">Contact us<span class="sr-only"></span></a></li>
                     </ul>
@@ -96,7 +96,7 @@
                             <li><a href="about.php" class="text-links">About us</a></li>
                             <li><a href="productlist.php" class="text-links">Products</a></li>
                             <li><a href="portfolio.php" class="text-links">Portfolio</a></li>
-                            <li><a href="colors.php" class="text-links">Color swatch</a></li>
+                            <li><a href="index.php?page=colors" class="text-links">Color swatch</a></li>
                         </ul>
                     </div>
 

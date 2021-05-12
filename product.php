@@ -111,7 +111,7 @@ if (isset($_GET['id'])) {
         <span class="price" style="font-size: 30px;">
           <?= currency_code ?><?= number_format($product['price'], 2) ?>
         </span><br>
-        <button class="btn-outline-dark mt-3 mb-5" style="font-size: 20px; cursor:pointer;">Color swatches</button>
+        <a href="index.php?page=colors" target="_blank"><button class="btn-outline-dark mt-3 mb-5" style="font-size: 20px; cursor:pointer;">Color swatches</button></a>
 
         <form id="product-form" action="<?= url('index.php?page=cart') ?>" method="post">
           <input class="mt-2 mr-1" type="number" name="quantity" value="1" min="1" <?php if ($product['quantity'] != -1) : ?>max="<?= $product['quantity'] ?>" <?php endif; ?> placeholder="Quantity" required>
@@ -159,7 +159,7 @@ if (isset($_GET['id'])) {
             <li><a href="about.php" class="text-links">About us</a></li>
             <li><a href="productlist.php" class="text-links">Products</a></li>
             <li><a href="portfolio.php" class="text-links">Portfolio</a></li>
-            <li><a href="colors.php" class="text-links">Color swatch</a></li>
+            <li><a href="index.php?page=colors" class="text-links">Color swatch</a></li>
           </ul>
         </div>
 

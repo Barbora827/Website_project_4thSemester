@@ -98,7 +98,7 @@ function template_header($title, $head = '')
                                     class="sr-only"></span></a></li>
                         <li class="nav-item"><a class="nav-link" id="mainnav-item" href="portfolio.php">Portfolio<span
                                     class="sr-only"></span></a></li>
-                        <li class="nav-item"><a class="nav-link" id="mainnav-item" href="colors.php">Color swatch<span
+                        <li class="nav-item"><a class="nav-link" id="mainnav-item" href="index.php?page=colors">Color swatch<span
                                     class="sr-only"></span></a></li>
                         <li class="nav-item"><a class="nav-link" id="mainnav-item" href="howto.php">How to order<span
                                     class="sr-only"></span></a></li>

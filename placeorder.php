@@ -1,6 +1,5 @@
 <?php
-// Prevent direct access to file
-defined('shoppingcart') or exit;
+
 // Remove all the products in cart, the variable is no longer needed as the order has been processed
 unset($_SESSION['cart']);
 ?>
@@ -15,4 +14,3 @@ unset($_SESSION['cart']);
 </div>
 <?php endif; ?>
 
-<?=template_footer()?>

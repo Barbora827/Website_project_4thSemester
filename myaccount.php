@@ -90,22 +90,42 @@ if (isset($_SESSION['account_loggedin'])) {
 ?>
 <?=template_header('My Account')?>
 
-<div class="myaccount content-wrapper">
+<style>
+    label {
+        display: inline-block;
+        text-align: center;
+        text-align: right;
+        width: 100px;
+    }
+
+    input {
+        display: inline-block;
+
+    }
+
+    @media (max-width: 535px) {
+        label {
+            width: 70px;
+        }
+    }
+</style>
+
+<div class="myaccount content-wrapper my-5 mx-0" id="bebas">
 
     <?php if (!isset($_SESSION['account_loggedin'])): ?>
 
-    <div class="login-register">
+    <div class="row justify-content-center login-register mx-0">
 
-        <div class="login">
+        <div class="col col-lg-3 login text-center mb-5">
 
-            <h1>Login</h1>
+            <h1 class="mb-4">Login</h1>
 
             <form action="" method="post">
                 <label for="email">Email</label>
-                <input type="email" name="email" id="email" placeholder="john@example.com" required>
+                <input type="email" name="email" id="email" placeholder="john@example.com" required><br>
                 <label for="password">Password</label>
-                <input type="password" name="password" id="password" placeholder="Password" required>
-                <input name="login" type="submit" value="Login">
+                <input type="password" name="password" id="password" placeholder="Password" required><br>
+                <input name="login" class="mt-4 mb-4" type="submit" value="Login">
             </form>
 
             <?php if ($error): ?>
@@ -114,18 +134,18 @@ if (isset($_SESSION['account_loggedin'])) {
 
         </div>
 
-        <div class="register">
+        <div class="col col-lg-3 register text-center">
 
-            <h1>Register</h1>
+            <h1 class="mb-4">Register</h1>
 
             <form action="" method="post">
                 <label for="email">Email</label>
-                <input type="email" name="email" id="email" placeholder="john@example.com" required>
+                <input type="email" name="email" id="email" placeholder="john@example.com" required><br>
                 <label for="password">Password</label>
-                <input type="password" name="password" id="password" placeholder="Password" required>
+                <input type="password" name="password" id="password" placeholder="Password" required><br>
                 <label for="cpassword">Confirm Password</label>
-                <input type="password" name="cpassword" id="cpassword" placeholder="Confirm Password" required>
-                <input name="register" type="submit" value="Register">
+                <input type="password" name="cpassword" id="cpassword" placeholder="Confirm Password" required><br>
+                <input name="register" class="mt-4" type="submit" value="Register">
             </form>
 
             <?php if ($register_error): ?>
@@ -187,5 +207,62 @@ if (isset($_SESSION['account_loggedin'])) {
     <?php endif; ?>
 
 </div>
+</main>
 
-<?=template_footer()?>
+   <!-- Footer -->
+<footer class="bg-dark mt-5 text-center text-white">
+    <div class="container p-5">
+
+        <!--Links -->
+        <section>
+            <div class="row justify-content-center" id="bebas">
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase" id="odkazy">Navigation</h5>
+
+                    <ul class="list-unstyled mb-0">
+                        <li><a href="index.php" class="text-links">Home</a></li>
+                        <li><a href="about.php" class="text-links">About us</a></li>
+                        <li><a href="productlist.php" class="text-links">Products</a></li>
+                        <li><a href="portfolio.php" class="text-links">Portfolio</a></li>
+                        <li><a href="index.php?page=colors" class="text-links">Color swatch</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase" id="odkazy">Useful links</h5>
+
+                    <ul class="list-unstyled mb-0">
+                        <li><a href="terms.php" class="text-links">Terms of use</a></li>
+                        <li><a href="privacy.php" class="text-links">Privacy policy</a></li>
+                        <li><a href="faq.php" class="text-links">FAQ</a></li>
+                        <li><a href="howto.php" class="text-links">How to order</a></li>
+                        <li><a href="shipping.php" class="text-links">Shipping</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase" id="odkazy">Contact us</h5>
+
+                    <ul class="list-unstyled mb-0">
+                        <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/svatbyvpodhuri" style="padding-left: 13px; padding-right: 13px;" role="button"><i class="fa fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/svatbyvpodhuri" role="button"><i class="fa fa-instagram"></i></a>
+                        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fa fa-envelope"></i></a>
+                         <li class="text-links">+420 721 046 729</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+    <!-- Copyright -->
+    <div class="text-center p-3" id="kaushan" style="background-color: rgba(0, 0, 0, 0.2); color:#ddac8f; margin-bottom: -20px;">
+        © 2021 Svatby v podhůří
+    </div>
+</footer>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
