@@ -5,7 +5,6 @@ $account = [
     'last_name' => '',
     'address_street' => '',
     'address_city' => '',
-    'address_state' => '',
     'address_zip' => '',
     'address_country' => 'Czech Republic'
 ];
@@ -19,13 +18,13 @@ if (isset($_SESSION['account_loggedin'])) {
     $account = $stmt->fetch(PDO::FETCH_ASSOC);
 }
 // Make sure when the user submits the form all data was submitted and shopping cart is not empty
-if (isset($_POST['first_name'], $_POST['last_name'], $_POST['address_street'], $_POST['address_city'], $_POST['address_state'], $_POST['address_zip'], $_POST['address_country'], $_SESSION['cart'])) {
+if (isset($_POST['first_name'], $_POST['last_name'], $_POST['address_street'], $_POST['address_city'], $_POST['address_zip'], $_POST['address_country'], $_SESSION['cart'])) {
     $account_id = null;
     // If the user is already logged in
     if (isset($_SESSION['account_loggedin'])) {
         // Account logged-in, update the user's details
-        $stmt = $pdo->prepare('UPDATE accounts SET first_name = ?, last_name = ?, address_street = ?, address_city = ?, address_state = ?, address_zip = ?, address_country = ? WHERE id = ?');
-        $stmt->execute([$_POST['first_name'], $_POST['last_name'], $_POST['address_street'], $_POST['address_city'], $_POST['address_state'], $_POST['address_zip'], $_POST['address_country'], $_SESSION['account_id']]);
+        $stmt = $pdo->prepare('UPDATE accounts SET first_name = ?, last_name = ?, address_street = ?, address_city = ?, address_zip = ?, address_country = ? WHERE id = ?');
+        $stmt->execute([$_POST['first_name'], $_POST['last_name'], $_POST['address_street'], $_POST['address_city'], $_POST['address_zip'], $_POST['address_country'], $_SESSION['account_id']]);
         $account_id = $_SESSION['account_id'];
     } else if (isset($_POST['email'], $_POST['password'], $_POST['cpassword']) && filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
         // User is not logged in, check if the account already exists with the email they submitted
@@ -45,10 +44,10 @@ if (isset($_POST['first_name'], $_POST['last_name'], $_POST['address_street'], $
         }
         if (!$errors) {
             // Email doesnt exist, create new account
-            $stmt = $pdo->prepare('INSERT INTO accounts (email, password, first_name, last_name, address_street, address_city, address_state, address_zip, address_country) VALUES (?,?,?,?,?,?,?,?,?)');
+            $stmt = $pdo->prepare('INSERT INTO accounts (email, password, first_name, last_name, address_street, address_city, address_zip, address_country) VALUES (?,?,?,?,?,?,?,?,?)');
             // Hash the password
             $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-            $stmt->execute([$_POST['email'], $password, $_POST['first_name'], $_POST['last_name'], $_POST['address_street'], $_POST['address_city'], $_POST['address_state'], $_POST['address_zip'], $_POST['address_country']]);
+            $stmt->execute([$_POST['email'], $password, $_POST['first_name'], $_POST['last_name'], $_POST['address_street'], $_POST['address_city'], $_POST['address_zip'], $_POST['address_country']]);
             $account_id = $pdo->lastInsertId();
             $stmt = $pdo->prepare('SELECT * FROM accounts WHERE id = ?');
             $stmt->execute([$account_id]);
@@ -92,7 +91,7 @@ if (isset($_POST['first_name'], $_POST['last_name'], $_POST['address_street'], $
             // Iterate each product in the user's shopping cart
             // Unique transaction ID
             $transaction_id = strtoupper(uniqid('SC') . substr(md5(mt_rand()), 0, 5));
-            $stmt = $pdo->prepare('INSERT INTO transactions (txn_id, payment_amount, payment_status, created, payer_email, first_name, last_name, address_street, address_city, address_state, address_zip, address_country, account_id, payment_method) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)');
+            $stmt = $pdo->prepare('INSERT INTO transactions (txn_id, payment_amount, payment_status, created, payer_email, first_name, last_name, address_street, address_city, address_zip, address_country, account_id, payment_method) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)');
             $stmt->execute([
                 $transaction_id,
                 $subtotal + $shippingtotal,
@@ -103,7 +102,6 @@ if (isset($_POST['first_name'], $_POST['last_name'], $_POST['address_street'], $
                 $_POST['last_name'],
                 $_POST['address_street'],
                 $_POST['address_city'],
-                $_POST['address_state'],
                 $_POST['address_zip'],
                 $_POST['address_country'],
                 $account_id,
@@ -132,8 +130,8 @@ if (isset($_POST['first_name'], $_POST['last_name'], $_POST['address_street'], $
                 $_POST['last_name'],
                 $_POST['address_street'],
                 $_POST['address_city'],
-                $_POST['address_state'],
                 $_POST['address_zip'],
+                $_POST['address_state'],
                 $_POST['address_country'],
                 $subtotal + $shippingtotal,
                 $order_id
@@ -148,7 +146,6 @@ if (isset($_POST['first_name'], $_POST['last_name'], $_POST['address_street'], $
         'last_name' => $_POST['last_name'],
         'address_street' => $_POST['address_street'],
         'address_city' => $_POST['address_city'],
-        'address_state' => $_POST['address_state'],
         'address_zip' => $_POST['address_zip'],
         'address_country' => $_POST['address_country']
     ];
@@ -189,7 +186,7 @@ $countries = ["Czech Republic", "Denmark", "Slovakia"];
 <p class="error"><?= implode('<br>', $errors) ?></p>
 
 <div class="row justify-content-center bg-danger mx-0 mb-5">
-    <form action="email.php" method="post" class="my-5" id="bebas" style="margin-right: 70px;">
+    <form action="index.php?page=placeorder" method="post" class="my-5" id="bebas" style="margin-right: 70px;">
 
         <?php if (!isset($_SESSION['account_loggedin'])) : ?>
             <h2 class="text-center" style="margin-left: 80px">Create Account<?php if (!account_required) : ?> (optional)<?php endif; ?></h2>
@@ -224,8 +221,6 @@ $countries = ["Czech Republic", "Denmark", "Slovakia"];
         </div>
 
         <div class="row">
-            <label for="address_state" class="mr-1 mr-lg-3">State</label>
-            <input type="text" value="<?= $account['address_state'] ?>" name="address_state" id="address_state" placeholder="" required>
             <label for="address_zip" class="mr-1 mr-lg-3">Zip</label>
             <input type="text" value="<?= $account['address_zip'] ?>" name="address_zip" id="address_zip" placeholder="" required>
         </div>
