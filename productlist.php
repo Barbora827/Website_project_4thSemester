@@ -82,21 +82,7 @@
                 <a href="index.php?page=pillows"><span class="img-label">Ring pillows</span></a>
             </div>
             <div class="col-5 mt-1 mx-1 col-md mx-md-1 col-lg bb-height-image-tall" id="portfolio">
-                <a href="index.php?page=boxes"><span class="img-label">Decorative boxes</span></a>
-            </div>
-        </div>
-        <div class="row mx-0  justify-content-center">
-            <div class="col-5 mt-1 col-md p-0 col-lg bb-height-image-tall" id="portfolio">
-                <a href="makronky.html"><span class="img-label">Macrones</span></a>
-            </div>
-            <div class="col-5 mt-1 mx-1 col-md mx-md-1 col-lg bb-height-image-tall" id="portfolio">
-                <a href="index.php?page=namecards"><span class="img-label">Name cards</span></a>
-            </div>
-            <div class="col-5 mt-1 col-md p-0 col-lg bb-height-image-tall" id="portfolio">
-                <span class="img-label">7</span>
-            </div>
-            <div class="col-5 mt-1 mx-1 col-md mx-md-1 col-lg bb-height-image-tall" id="portfolio">
-                <span class="img-label">8</span>
+                <a href="index.php?page=boxes"><span class="img-label">Name cards</span></a>
             </div>
         </div>
 

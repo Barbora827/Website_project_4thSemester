@@ -554,7 +554,7 @@ mark,
 .img-label {
   position: absolute;
   font-family:'Bebas Neue', cursive;
-  font-size: 3.5rem;
+  font-size: 3rem;
   text-align: center;
   color: #f4f3ef;
   text-shadow: 3px 4px 5px #000;
@@ -571,13 +571,13 @@ mark,
 
 @media (max-width: 1200px) {
   #img-label-long{
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
 }
 
 @media (min-width: 1200px) {
   #img-label-long{
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
 }
 

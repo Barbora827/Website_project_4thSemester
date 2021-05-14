@@ -45,11 +45,11 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <div class="col-6 col-lg-3 my-4">
         <a href="<?= url('index.php?page=product&id=' . ($product['id'])) ?>" class="product">
           <?php if (!empty($product['img']) && file_exists('imgs/' . $product['img'])) : ?>
-            <img src="imgs/<?= $product['img'] ?>" width="200" height="200" alt="<?= $product['name'] ?>">
+            <img src="imgs/<?= $product['img'] ?>" width="200" height="250" alt="<?= $product['name'] ?>">
           <?php endif; ?>
           <span class="name mt-2" id="bebas" style="font-size: 20px; color:#343a40"><?= $product['name'] ?></span><br>
           <span class="price" id="bebas" style="font-size: 20px; color:#343a40">
-            <?= currency_code ?><?= number_format($product['price'], 2) ?>  
+            <?= number_format($product['price'], 2) ?> <?= currency_code ?>  
           </span>
         </a>
         </div>

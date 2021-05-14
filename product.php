@@ -109,7 +109,7 @@ if (isset($_GET['id'])) {
         <h1 class="product-name"><?= $product['name'] ?></h1>
 
         <span class="price" style="font-size: 30px;">
-          <?= currency_code ?><?= number_format($product['price'], 2) ?>
+          <?= number_format($product['price'], 2) ?> <?= currency_code ?>
         </span><br>
         <a href="index.php?page=colors" target="_blank"><button class="btn-outline-dark mt-3 mb-5" style="font-size: 20px; cursor:pointer;">Color swatches</button></a>
 
