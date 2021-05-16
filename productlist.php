@@ -82,7 +82,7 @@
                 <a href="index.php?page=pillows"><span class="img-label">Ring pillows</span></a>
             </div>
             <div class="col-5 mt-1 mx-1 col-md mx-md-1 col-lg bb-height-image-tall" id="portfolio">
-                <a href="index.php?page=boxes"><span class="img-label">Name cards</span></a>
+                <a href="index.php?page=namecards"><span class="img-label">Name cards</span></a>
             </div>
         </div>
 

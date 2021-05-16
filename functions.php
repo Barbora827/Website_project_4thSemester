@@ -25,7 +25,7 @@ function &get_cart_product($id, $options)
     return $p;
 }
 // Send order details email function
-function send_order_details_email($email, $products, $first_name, $last_name, $address_street, $address_city, $address_state, $address_zip, $address_country, $subtotal, $order_id)
+function send_order_details_email($email, $products, $first_name, $last_name, $address_street, $address_city, $address_zip, $address_country, $subtotal, $order_id)
 {
     if (!mail_enabled) {
         return;
@@ -171,31 +171,7 @@ function template_admin_header($title, $selected = 'orders')
             </header>
 EOT;
 }
-// Template admin footer
-function template_admin_footer()
-{
-    echo <<<EOT
-        </main>
-        <script>
-        document.querySelector(".responsive-toggle").onclick = function(event) {
-            event.preventDefault();
-            let aside = document.querySelector("aside"), main = document.querySelector("main"), header = document.querySelector("header");
-            let asideStyle = window.getComputedStyle(aside);
-            if (asideStyle.display == "none") {
-                aside.classList.remove("closed", "responsive-hidden");
-                main.classList.remove("full");
-                header.classList.remove("full");
-            } else {
-                aside.classList.add("closed", "responsive-hidden");
-                main.classList.add("full");
-                header.classList.add("full");
-            }
-        };
-        </script>
-    </body>
-</html>
-EOT;
-}
+
 // Rewrite URL function
 function url($url)
 {

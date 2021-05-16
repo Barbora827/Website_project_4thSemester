@@ -18,6 +18,40 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 
+<style>
+.logo-label {
+  position: absolute;
+  font-family:'Kaushan Script', cursive;
+  font-weight: bold;
+  font-size: 4rem;
+  text-align: center;
+  color: #f4f3ef;
+  text-shadow: 3px 4px 5px #000;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+@media (max-width: 578px) {
+.logo-label{
+    font-size: 2rem;
+  }
+}
+
+.img-label {
+  text-shadow: 3px 3px 3px #000;
+  color:#fff;
+  
+}
+
+
+
+
+
+
+</style>
+
 <body>
     <!--Navbar-->
     <nav class="navbar navbar-expand-md" style="height: 60px;">
@@ -60,21 +94,22 @@
     <div class="container text-center my-5">
         <div class="row mx-0 justify-content-center">
             <div class="col-12 p-0 col-lg-9">
-                <img src="img/wallpaper.jpg" class="img-fluid" id="mainpic" style="height: 400px;">
+                <img src="imgs/Carondelet-House-Wedding-4.jpg" class="img-fluid" id="mainpic" style="height: 400px;">
+                <span class="logo-label mx-0">Svatby v podhůří</span>
                 <img src="img/logo.png" class="img-2">
             </div>
         </div>
         <div class="row no-gutters mx-0 my-2 justify-content-center">
             <div class="col-6 p-2 col-md p-0 col-lg-3">
-                <img src="img/Aesthetic-Trees-Sky-Afterglow-Branches-Clouds-3172763.jpg" class="img-fluid" style="width: 100%;">
+                <img src="imgs/vintage.jpg" class="img-fluid" style="width: 100%; height: 100%; opacity: 0.7">
                 <a href="portfolio.php"><span class="img-label">Portfolio</span></a>
             </div>
             <div class="col-6 p-2 col-md mx-md-2 col-lg-3">
-                <img src="img/22bdb1d3453dca3120fa6c4294ca0d89.png" class="img-fluid" style="width: 100%;">
+                <img src="imgs/jmenovky.JPG" class="img-fluid" style="width: 100%; opacity: 0.7">
                 <a href="productlist.php"><span class="img-label">Products</span></a>
             </div>
             <div class="col-6 my-2 p-0 mx-auto col-md mx-md-0 my-md-0 p-md-2 col-lg-3">
-                <img src="img/aesthetic-photography-3.jpg" class="img-fluid" style="width: 100%;">
+                <img src="imgs/diy-wedding-decorations-1582647454.jpg" class="img-fluid" style="width: 100%; opacity: 0.7">
                 <a href="/objednavka.html"><span class="img-label" id="img-label-long">How to order</span></a>
             </div>
         </div>

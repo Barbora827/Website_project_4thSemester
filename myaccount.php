@@ -1,6 +1,4 @@
 <?php
-// Prevent direct access to file
-defined('shoppingcart') or exit;
 // User clicked the "Login" button, proceed with the login process... check POST data and validate email
 if (isset($_POST['login'], $_POST['email'], $_POST['password']) && filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
     // Check if the account exists
