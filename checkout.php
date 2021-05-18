@@ -10,40 +10,40 @@ $account = [
 ];
 // Error array, output errors on the form
 $errors = [];
+
 // Check if user is logged in
 if (isset($_SESSION['account_loggedin'])) {
     $stmt = $pdo->prepare('SELECT * FROM accounts WHERE id = ?');
     $stmt->execute([$_SESSION['account_id']]);
-    // Fetch the account from the database and return the result as an Array
     $account = $stmt->fetch(PDO::FETCH_ASSOC);
 }
-// Make sure when the user submits the form all data was submitted and shopping cart is not empty
+// Make sure the user submits all data and shopping cart is not empty
 if (isset($_POST['first_name'], $_POST['last_name'], $_POST['address_street'], $_POST['address_city'], $_POST['address_zip'], $_POST['address_country'], $_SESSION['cart'])) {
     $account_id = null;
+
     // If the user is already logged in
     if (isset($_SESSION['account_loggedin'])) {
-        // Account logged-in, update the user's details
         $stmt = $pdo->prepare('UPDATE accounts SET first_name = ?, last_name = ?, address_street = ?, address_city = ?, address_zip = ?, address_country = ? WHERE id = ?');
         $stmt->execute([$_POST['first_name'], $_POST['last_name'], $_POST['address_street'], $_POST['address_city'], $_POST['address_zip'], $_POST['address_country'], $_SESSION['account_id']]);
         $account_id = $_SESSION['account_id'];
-    } else if (isset($_POST['email'], $_POST['password'], $_POST['cpassword']) && filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-        // User is not logged in, check if the account already exists with the email they submitted
+    } 
+    
+    // User is not logged in, check if the email already exists in database
+    else if (isset($_POST['email'], $_POST['password'], $_POST['cpassword']) && filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
         $stmt = $pdo->prepare('SELECT id FROM accounts WHERE email = ?');
         $stmt->execute([$_POST['email']]);
+        // Email exists, user should login
         if ($stmt->fetch(PDO::FETCH_ASSOC)) {
-            // Email exists, user should login instead...
             $errors[] = 'Account already exists with this email, please login instead!';
         }
-        if (strlen($_POST['password']) > 20 || strlen($_POST['password']) < 5) {
-            // Password must be between 5 and 20 characters long.
-            $errors[] = 'Password must be between 5 and 20 characters long!';
-        }
+
+        // Password and confirm password fields do not match
         if ($_POST['password'] != $_POST['cpassword']) {
-            // Password and confirm password fields do not match...
             $errors[] = 'Passwords do not match!';
         }
+
         if (!$errors) {
-            // Email doesnt exist, create new account
+            // Email does not exist yet in the database, create new account
             $stmt = $pdo->prepare('INSERT INTO accounts (email, password, first_name, last_name, address_street, address_city, address_zip, address_country) VALUES (?,?,?,?,?,?,?,?,?)');
             // Hash the password
             $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
@@ -51,7 +51,7 @@ if (isset($_POST['first_name'], $_POST['last_name'], $_POST['address_street'], $
             $account_id = $pdo->lastInsertId();
             $stmt = $pdo->prepare('SELECT * FROM accounts WHERE id = ?');
             $stmt->execute([$account_id]);
-            // Fetch the account from the database and return the result as an Array
+    
             $account = $stmt->fetch(PDO::FETCH_ASSOC);
         }
     } else if (account_required) {
@@ -61,10 +61,10 @@ if (isset($_POST['first_name'], $_POST['last_name'], $_POST['address_street'], $
         // No errors, process the order
         $products_in_cart = isset($_SESSION['cart']) ? $_SESSION['cart'] : [];
         $subtotal = 0.00;
+
         // If there are products in cart
         if ($products_in_cart) {
             // There are products in the cart so we need to select those products from the database
-            // Products in cart array to question mark string array, we need the SQL statement to include: IN (?,?,?,...etc)
             $array_to_question_marks = implode(',', array_fill(0, count($products_in_cart), '?'));
             $stmt = $pdo->prepare('SELECT p.id, c.id AS category_id, p.* FROM products p LEFT JOIN products_categories pc ON p.id = pc.product_id LEFT JOIN categories c ON c.id = pc.category_id WHERE p.id IN (' . $array_to_question_marks . ') GROUP BY p.id, c.id');
             // We use the array_column to retrieve only the id's of the products
@@ -278,7 +278,7 @@ $countries = ["Czech Republic", "Denmark", "Slovakia"];
                     <ul class="list-unstyled mb-0">
                         <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/svatbyvpodhuri" style="padding-left: 13px; padding-right: 13px;" role="button"><i class="fa fa-facebook-f"></i></a>
                         <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/svatbyvpodhuri" role="button"><i class="fa fa-instagram"></i></a>
-                        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fa fa-envelope"></i></a>
+                        <a class="btn btn-outline-light btn-floating m-1" href="mailto: terikbyrtusek@seznam.cz" role="button"><i class="fa fa-envelope"></i></a>
                          <li class="text-links">+420 721 046 729</li>
                     </ul>
                 </div>

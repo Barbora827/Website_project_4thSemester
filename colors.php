@@ -75,7 +75,7 @@ $colors = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </nav>
     <a class="btn btn-outline-dark btn-floating m-1 social-icon" id="socialicon-f" href="https://www.facebook.com/svatbyvpodhuri" role="button"><i class="fa fa-facebook-f"></i></a>
     <a class="btn btn-outline-dark btn-floating m-1 social-icon" id="socialicon-i" href="https://www.instagram.com/svatbyvpodhuri" role="button"><i class="fa fa-instagram"></i></a>
-    <a class="btn btn-outline-dark btn-floating m-1 social-icon" id="socialicon-e" href="#!" role="button"><i class="fa fa-envelope"></i></a>
+    <a class="btn btn-outline-dark btn-floating m-1 social-icon" id="socialicon-e" href="mailto: terikbyrtusek@seznam.cz" role="button"><i class="fa fa-envelope"></i></a>
     <a href="index.php?page=cart"><button class="btn btn-outline-dark" id="shopcart">
             <i class="fa fa-shopping-cart"></i>
         </button></a>
@@ -105,193 +105,6 @@ $colors = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
       <?php endforeach; ?>
           </div>
-
-      <!--  <div class="row mx-0 my-0 justify-content-center">
-            <div class="col mt-1 p-0 mr-md-1 ">
-                <img class="img-responsive" src="imgs/colors/Antracitová.jpg">
-                <span class="color-label">Anthracit</span>
-            </div>
-            <div class="col mt-1 p-0 mr-md-1">
-                <img class="img-responsive" src="imgs/colors/Azure.jpg">
-                <span class="color-label">Azure</span>
-            </div>
-            <div class="col mt-1 p-0 mr-md-1">
-                <img class="img-responsive" src="imgs/colors/azurro.jpg">
-                <span class="color-label">Azurro</span>
-            </div>
-            <div class="col mt-1 p-0 mr-md-1">
-                <img class="img-responsive" src="imgs/colors/bettula.jpg">
-                <span class="color-label">Bettula</span>
-            </div>
-            <div class="col mt-1 p-0 mr-md-1">
-                <img class="img-responsive" src="imgs/colors/Bisquit.jpg">
-                <span class="color-label">Bisquit</span>
-            </div>
-        </div>
-
-        <div class="row mx-0 my-0 justify-content-center">
-            <div class="col mt-1 p-0 mr-md-1">
-                <img class="img-responsive" src="imgs/colors/burgundy.jpg">
-                <span class="color-label">Burgundy</span>
-            </div>
-            <div class="col mt-1 p-0 mr-md-1">
-                <img class="img-responsive" src="imgs/colors/Kakao.jpg">
-                <span class="color-label">Cacao</span>
-            </div>
-            <div class="col mt-1 p-0 mr-md-1">
-                <img class="img-responsive" src="imgs/colors/Celeste.jpg">
-                <span class="color-label">Celeste</span>
-            </div>
-            <div class="col mt-1 p-0 mr-md-1">
-                <img class="img-responsive" src="imgs/colors/Cipria.jpg">
-                <span class="color-label">Cipria</span>
-            </div>
-            <div class="col mt-1 p-0 mr-md-1">
-                <img class="img-responsive" src="imgs/colors/Coral red.jpg">
-                <span class="color-label">Coral red</span>
-            </div>
-        </div>
-
-        <div class="row mx-0 my-0 justify-content-center">
-            <div class="col mt-1 p-0 mr-md-1">
-                <img class="img-responsive" src="imgs/colors/Kraft eco.jpg">
-                <span class="color-label">Craft eco</span>
-            </div>
-            <div class="col mt-1 p-0 mr-md-1">
-                <img class="img-responsive" src="imgs/colors/Dark Blue.jpg">
-                <span class="color-label">Dark blue</span>
-            </div>
-            <div class="col mt-1 p-0 mr-md-1">
-                <img class="img-responsive" src="imgs/colors/Dusty blue.jpg">
-                <span class="color-label">Dusty blue</span>
-            </div>
-            <div class="col mt-1 p-0 mr-md-1">
-                <img class="img-responsive" src="imgs/colors/English green.jpg">
-                <span class="color-label">English green</span>
-            </div>
-            <div class="col mt-1 p-0 mr-md-1">
-                <img class="img-responsive" src="imgs/colors/foglia green.jpg">
-                <span class="color-label">Foglia green</span>
-            </div>
-        </div>
-
-        <div class="row mx-0 my-0 justify-content-center">
-            <div class="col mt-1 p-0 mr-md-1">
-                <img class="img-responsive" src="imgs/colors/Grey fog.jpg">
-                <span class="color-label">Grey fog</span>
-            </div>
-            <div class="col mt-1 p-0 mr-md-1">
-                <img class="img-responsive" src="imgs/colors/guardsman red.jpg">
-                <span class="color-label">Guardsman red</span>
-            </div>
-            <div class="col mt-1 p-0 mr-md-1">
-                <img class="img-responsive" src="imgs/colors/Holly tmavězelená.jpg">
-                <span class="color-label">Holly darkgreen</span>
-            </div>
-            <div class="col mt-1 p-0 mr-md-1">
-                <img class="img-responsive" src="imgs/colors/cherry red.jpg">
-                <span class="color-label">Cherry red</span>
-            </div>
-            <div class="col mt-1 p-0 mr-md-1">
-                <img class="img-responsive" src="imgs/colors/Indian Yellow.jpg">
-                <span class="color-label">Indian yellow</span>
-            </div>
-
-
-        </div>
-
-        <div class="row mx-0 my-0 justify-content-center">
-            <div class="col mt-1 p-0 mr-md-1">
-                <img class="img-responsive" src="imgs/colors/Lampone.jpg">
-                <span class="color-label">Lampone</span>
-            </div>
-            <div class="col mt-1 p-0 mr-md-1">
-                <img class="img-responsive" src="imgs/colors/Limone.jpg">
-                <span class="color-label">Limone</span>
-            </div>
-            <div class="col mt-1 p-0 mr-md-1">
-                <img class="img-responsive" src="imgs/colors/Lipstick.jpg">
-                <span class="color-label">Lipstick</span>
-            </div>
-            <div class="col mt-1 p-0 mr-md-1">
-                <img class="img-responsive" src="imgs/colors/Malva.jpg">
-                <span class="color-label">Malva</span>
-            </div>
-            <div class="col mt-1 p-0 mr-md-1">
-                <img class="img-responsive" src="imgs/colors/Matcha tee.jpg">
-                <span class="color-label">Matcha tea</span>
-            </div>
-        </div>
-
-        <div class="row mx-0 my-0 justify-content-center">
-            <div class="col mt-1 p-0 mr-md-1">
-                <img class="img-responsive" src="imgs/colors/Mocca.jpg">
-                <span class="color-label">Mocca</span>
-            </div>
-            <div class="col mt-1 p-0 mr-md-1">
-                <img class="img-responsive" src="imgs/colors/Modrá.jpg">
-                <span class="color-label">Blue</span>
-            </div>
-            <div class="col mt-1 p-0 mr-md-1">
-                <img class="img-responsive" src="imgs/colors/Noce.jpg">
-                <span class="color-label">Noce</span>
-            </div>
-            <div class="col mt-1 p-0 mr-md-1">
-                <img class="img-responsive" src="imgs/colors/Nude.jpg">
-                <span class="color-label">Nude</span>
-            </div>
-            <div class="col mt-1 p-0 mr-md-1">
-                <img class="img-responsive" src="imgs/colors/Old rose.jpg">
-                <span class="color-label">Old rose</span>
-            </div>
-        </div>
-
-        <div class="row mx-0 my-0 justify-content-center">
-            
-            <div class="col mt-1 p-0 mr-md-1">
-                <img class="img-responsive" src="imgs/colors/Zelená olivová.jpg">
-                <span class="color-label">Olive green</span>
-            </div>
-            <div class="col mt-1 p-0 mr-md-1">
-                <img class="img-responsive" src="imgs/colors/Pastel Blue.jpg">
-                <span class="color-label">Pastel blue</span>
-            </div>
-            <div class="col mt-1 p-0 mr-md-1">
-                <img class="img-responsive" src="imgs/colors/Pastel green.jpg">
-                <span class="color-label">Pastel green</span>
-            </div>
-            <div class="col mt-1 p-0 mr-md-1">
-                <img class="img-responsive" src="imgs/colors/Pastel pink.jpg">
-                <span class="color-label">Pastel pink</span>
-            </div>
-            <div class="col mt-1 p-0 mr-md-1">
-                <img class="img-responsive" src="imgs/colors/Pietra.jpg">
-                <span class="color-label">Pietra</span>
-            </div>
-        </div>
-        <div class="row mx-0 my-0 justify-content-center">
-            <div class="col mt-1 p-0 mr-md-1">
-                <img class="img-responsive" src="imgs/colors/Port wine.jpg">
-                <span class="color-label">Port wine</span>
-            </div>
-            <div class="col mt-1 p-0 mr-md-1">
-                <img class="img-responsive" src="imgs/colors/Rosa.jpg">
-                <span class="color-label">Rosa</span>
-            </div>
-            <div class="col mt-1 p-0 mr-md-1">
-                <img class="img-responsive" src="imgs/colors/rosebud.jpg">
-                <span class="color-label">Rosebud</span>
-            </div>
-            <div class="col mt-1 p-0 mr-md-1">
-                <img class="img-responsive" src="imgs/colors/Sun.jpg">
-                <span class="color-label">Sun</span>
-            </div>
-            <div class="col mt-1 p-0 mr-md-1">
-                <img class="img-responsive" src="imgs/colors/Vino.jpg">
-                <span class="color-label">Wine</span>
-            </div>
-        </div> -->
-
 
     </div>
     <div class="row no-gutters mx-0 my-2 justify-content-center">
@@ -334,7 +147,7 @@ $colors = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <ul class="list-unstyled mb-0">
                             <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/svatbyvpodhuri" style="padding-left: 13px; padding-right: 13px;" role="button"><i class="fa fa-facebook-f"></i></a>
                             <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/svatbyvpodhuri" role="button"><i class="fa fa-instagram"></i></a>
-                            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fa fa-envelope"></i></a>
+                            <a class="btn btn-outline-light btn-floating m-1" href="mailto: terikbyrtusek@seznam.cz" role="button"><i class="fa fa-envelope"></i></a>
                             <li class="text-links">+420 721 046 729</li>
                         </ul>
                     </div>

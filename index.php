@@ -4,7 +4,6 @@ $base_url .= '://' . rtrim($_SERVER['HTTP_HOST'], '/');
 $base_url .= $_SERVER['SERVER_PORT'] == 80 || $_SERVER['SERVER_PORT'] == 443 ? '' : ':' . $_SERVER['SERVER_PORT'];
 $base_url .= '/' . ltrim(substr(str_replace('\\', '/', realpath(__DIR__)), strlen($_SERVER['DOCUMENT_ROOT'])), '/');
 define('base_url', rtrim($base_url, '/') . '/');
-// If somehow the above URL fails to resolve the correct URL, you can simply comment out the below line and manually specifiy the URL to the system.
 // Initialize a new session
 session_start();
 // Include the configuration file, this contains settings you can change.

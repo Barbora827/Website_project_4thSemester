@@ -115,7 +115,7 @@ function template_header($title, $head = '')
         href="https://www.facebook.com/svatbyvpodhuri" target="_blank" role="button"><i class="fa fa-facebook-f"></i></a>
     <a class="btn btn-outline-dark btn-floating m-1 social-icon" id="socialicon-i"
         href="https://www.instagram.com/svatbyvpodhuri" target="_blank" role="button"><i class="fa fa-instagram"></i></a>
-    <a class="btn btn-outline-dark btn-floating m-1 social-icon" id="socialicon-e" href="#!" role="button"><i
+    <a class="btn btn-outline-dark btn-floating m-1 social-icon" id="socialicon-e" href="mailto: terikbyrtusek@seznam.cz" role="button"><i
             class="fa fa-envelope"></i></a>
         <main>
 EOT;
