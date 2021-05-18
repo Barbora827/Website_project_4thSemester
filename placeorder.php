@@ -47,10 +47,10 @@ $mail->SMTPAuth = TRUE;
 $mail->SMTPSecure = 'tls';
 
 /* SMTP authentication username. */
-$mail->Username = 'barcabyrtusova827@gmail.com';
+$mail->Username = 'barcabyrtusova@gmail.com';
 
 /* SMTP authentication password. */
-$mail->Password = 'Alva281207_';
+$mail->Password = 'dennysek';
 
 /* Set the SMTP port. */
 $mail->Port = 587;
@@ -92,10 +92,10 @@ $mailadmin->SMTPAuth = TRUE;
 $mailadmin->SMTPSecure = 'tls';
 
 /* SMTP authentication username. */
-$mailadmin->Username = 'barcabyrtusova827@gmail.com';
+$mailadmin->Username = 'barcabyrtusova@gmail.com';
 
 /* SMTP authentication password. */
-$mailadmin->Password = 'Alva281207_';
+$mailadmin->Password = 'dennysek';
 
 /* Set the SMTP port. */
 $mailadmin->Port = 587;
@@ -111,7 +111,7 @@ unset($_SESSION['cart']);
 <?php if ($error) : ?>
     <p class="content-wrapper error"><?= $error ?></p>
 <?php else : ?>
-    <div class="placeorder content-wrapper">
+    <div class="placeorder content-wrapper text-center">
         <h1>Your Order Has Been Placed</h1>
         <p>Thank you for ordering with us, we'll contact you by email with your order details.</p>
     </div>

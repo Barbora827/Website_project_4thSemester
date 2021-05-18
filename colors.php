@@ -57,7 +57,7 @@ $colors = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <li class="nav-item"><a class="nav-link" id="mainnav-item" href="about.php">About us<span class="sr-only"></span></a></li>
                         <li class="nav-item"><a class="nav-link" id="mainnav-item" href="productlist.php">Products<span class="sr-only"></span></a></li>
                         <li class="nav-item"><a class="nav-link" id="mainnav-item" href="portfolio.php">Portfolio<span class="sr-only"></span></a></li>
-                        <li class="nav-item"><a class="nav-link" id="mainnav-item" href="index.php?page=colors">Color swatch<span class="sr-only"></span></a></li>
+                        <li class="nav-item"><a class="nav-link" id="mainnav-item" href="index.php?page=colors" target="_blank">Color swatch<span class="sr-only"></span></a></li>
                         <li class="nav-item"><a class="nav-link" id="mainnav-item" href="howto.php">How to order<span class="sr-only"></span></a></li>
                         <li class="nav-item"><a class="nav-link" id="mainnav-item" href="contact.php">Contact us<span class="sr-only"></span></a></li>
                     </ul>
@@ -99,9 +99,7 @@ $colors = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <div class="row mx-0 justify-content-center">
         <?php foreach ($colors as $color) : ?>
         <div class="col-5 col-md-4 col-lg-3 col-xl-2 my-4">
-          <?php if (!empty($color['imgsrc']) && file_exists('imgs/colors/' . $color['imgsrc'])) : ?>
-            <img src="imgs/colors/<?= $color['imgsrc'] ?>" width="200" height="180" alt="<?= $color['name'] ?>">
-          <?php endif; ?>
+            <img src="imgs/colors/<?= $color['imgsrc'] ?>" width="200" height="180"> 
           <span class="name mt-2" id="bebas" style="font-size: 20px; color:#343a40"><?= $color['name'] ?></span><br>
           </span>
         </div>
@@ -314,7 +312,7 @@ $colors = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <li><a href="about.php" class="text-links">About us</a></li>
                             <li><a href="productlist.php" class="text-links">Products</a></li>
                             <li><a href="portfolio.php" class="text-links">Portfolio</a></li>
-                            <li><a href="index.php?page=colors" class="text-links">Color swatch</a></li>
+                            <li><a href="index.php?page=colors" target="_blank" class="text-links">Color swatch</a></li>
                         </ul>
                     </div>
 

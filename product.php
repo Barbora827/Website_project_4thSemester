@@ -23,7 +23,6 @@ if (isset($_GET['id'])) {
   $stmt->execute([$product['broad_category']]);
   // Fetch the product options from the database and return the result as an Array
   $product_options = $stmt->fetchAll(PDO::FETCH_ASSOC);
-  // Add the HTML meta data (for SEO purposes)
 }
 ?>
 <?= template_header($product['name']) ?>
@@ -159,7 +158,7 @@ if (isset($_GET['id'])) {
             <li><a href="about.php" class="text-links">About us</a></li>
             <li><a href="productlist.php" class="text-links">Products</a></li>
             <li><a href="portfolio.php" class="text-links">Portfolio</a></li>
-            <li><a href="index.php?page=colors" class="text-links">Color swatch</a></li>
+            <li><a href="index.php?page=colors" target="_blank" class="text-links">Color swatch</a></li>
           </ul>
         </div>
 

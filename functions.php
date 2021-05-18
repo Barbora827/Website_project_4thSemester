@@ -37,18 +37,9 @@ function send_order_details_email($email, $products, $first_name, $last_name, $a
     $order_details_template = ob_get_clean();
     mail($email, $subject, $order_details_template, $headers);
 }
-// Template header, feel free to customize this
+// Template header
 function template_header($title, $head = '')
-{
-    // Get the amount of items in the shopping cart, this will be displayed in the header.
-    $num_items_in_cart = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
-    $home_link = url('index.php');
-    $products_link = url('index.php?page=products');
-    $myaccount_link = url('index.php?page=myaccount');
-    $cart_link = url('index.php?page=cart');
-    $admin_link = isset($_SESSION['account_loggedin']) && $_SESSION['account_admin'] ? '<a href="' . base_url . 'admin/index.php" target="_blank">Admin</a>' : '';
-    $logout_link = isset($_SESSION['account_loggedin']) ? '<a title="Logout" href="' . url('index.php?page=logout') . '"><i class="fas fa-sign-out-alt"></i></a>' : '';
-    $site_name = site_name;
+{ 
     $base_url = base_url;
     echo <<<EOT
 <!DOCTYPE html>
@@ -79,9 +70,10 @@ function template_header($title, $head = '')
                 data-target="#sidebar-side" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fa fa-bars"></i>
             </button>
-            <button class="btn btn-outline-dark" id="shopcart">
+            <a href="index.php?page=cart"><button class="btn btn-outline-dark" id="shopcart">
                 <i class="fa fa-shopping-cart"></i>
             </button>
+            </a>
 
             <!--Collapsing sidebar-->
 
@@ -98,7 +90,7 @@ function template_header($title, $head = '')
                                     class="sr-only"></span></a></li>
                         <li class="nav-item"><a class="nav-link" id="mainnav-item" href="portfolio.php">Portfolio<span
                                     class="sr-only"></span></a></li>
-                        <li class="nav-item"><a class="nav-link" id="mainnav-item" href="index.php?page=colors">Color swatch<span
+                        <li class="nav-item"><a class="nav-link" id="mainnav-item" href="index.php?page=colors" target="_blank">Color swatch<span
                                     class="sr-only"></span></a></li>
                         <li class="nav-item"><a class="nav-link" id="mainnav-item" href="howto.php">How to order<span
                                     class="sr-only"></span></a></li>
@@ -120,55 +112,12 @@ function template_header($title, $head = '')
         </div>
     </nav>
     <a class="btn btn-outline-dark btn-floating m-1 social-icon" id="socialicon-f"
-        href="https://www.facebook.com/svatbyvpodhuri" role="button"><i class="fa fa-facebook-f"></i></a>
+        href="https://www.facebook.com/svatbyvpodhuri" target="_blank" role="button"><i class="fa fa-facebook-f"></i></a>
     <a class="btn btn-outline-dark btn-floating m-1 social-icon" id="socialicon-i"
-        href="https://www.instagram.com/svatbyvpodhuri" role="button"><i class="fa fa-instagram"></i></a>
+        href="https://www.instagram.com/svatbyvpodhuri" target="_blank" role="button"><i class="fa fa-instagram"></i></a>
     <a class="btn btn-outline-dark btn-floating m-1 social-icon" id="socialicon-e" href="#!" role="button"><i
             class="fa fa-envelope"></i></a>
         <main>
-EOT;
-}
-
-// Template admin header
-function template_admin_header($title, $selected = 'orders')
-{
-    $admin_links = '
-        <a href="index.php?page=dashboard"' . ($selected == 'dashboard' ? ' class="selected"' : '') . '><i class="fas fa-tachometer-alt"></i>Dashboard</a>
-        <a href="index.php?page=orders"' . ($selected == 'orders' ? ' class="selected"' : '') . '><i class="fas fa-shopping-cart"></i>Orders</a>
-        <a href="index.php?page=products"' . ($selected == 'products' ? ' class="selected"' : '') . '><i class="fas fa-box-open"></i>Products</a>
-        <a href="index.php?page=categories"' . ($selected == 'categories' ? ' class="selected"' : '') . '><i class="fas fa-list"></i>Categories</a>
-        <a href="index.php?page=accounts"' . ($selected == 'accounts' ? ' class="selected"' : '') . '><i class="fas fa-users"></i>Accounts</a>
-        <a href="index.php?page=shipping"' . ($selected == 'shipping' ? ' class="selected"' : '') . '><i class="fas fa-shipping-fast"></i>Shipping</a>
-        <a href="index.php?page=discounts"' . ($selected == 'discounts' ? ' class="selected"' : '') . '><i class="fas fa-tag"></i>Discounts</a>
-        <a href="index.php?page=images"' . ($selected == 'images' ? ' class="selected"' : '') . '><i class="fas fa-images"></i>Upload Images</a>
-        <a href="index.php?page=emailtemplates"' . ($selected == 'emailtemplates' ? ' class="selected"' : '') . '><i class="fas fa-envelope"></i>Email Templates</a>
-        <a href="index.php?page=settings"' . ($selected == 'settings' ? ' class="selected"' : '') . '><i class="fas fa-tools"></i>Settings</a>
-    ';
-    echo <<<EOT
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width,minimum-scale=1">
-		<title>$title</title>
-        <link rel="icon" type="image/png" href="../favicon.png">
-		<link href="admin.css" rel="stylesheet" type="text/css">
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
-	</head>
-	<body class="admin">
-        <aside class="responsive-width-100 responsive-hidden">
-            <h1>Shopping Cart Admin</h1>
-            $admin_links
-        </aside>
-        <main class="responsive-width-100">
-            <header>
-                <a class="responsive-toggle" href="#">
-                    <i class="fas fa-bars"></i>
-                </a>
-                <div class="space-between"></div>
-                <a href="index.php?page=about" class="right"><i class="fas fa-question-circle"></i></a>
-                <a href="index.php?page=logout" class="right"><i class="fas fa-sign-out-alt"></i></a>
-            </header>
 EOT;
 }
 

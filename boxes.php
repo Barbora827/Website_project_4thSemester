@@ -44,9 +44,7 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <?php foreach ($products as $product) : ?>
           <div class="col-6 col-lg-3 my-4">
             <a href="<?= url('index.php?page=product&id=' . ($product['id'])) ?>" class="product">
-              <?php if (!empty($product['img']) && file_exists('imgs/' . $product['img'])) : ?>
-                <img src="imgs/<?= $product['img'] ?>" width="200" height="200" alt="<?= $product['name'] ?>">
-              <?php endif; ?>
+                <img src="imgs/<?= $product['img'] ?>" width="200" height="200">
               <span class="name mt-2" id="bebas" style="font-size: 20px; color:#343a40"><?= $product['name'] ?></span><br>
               <span class="price" id="bebas" style="font-size: 20px; color:#343a40">
                 <?= currency_code ?><?= number_format($product['price'], 2) ?>
@@ -75,7 +73,7 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
               <li><a href="about.php" class="text-links">About us</a></li>
               <li><a href="productlist.php" class="text-links">Products</a></li>
               <li><a href="portfolio.php" class="text-links">Portfolio</a></li>
-              <li><a href="index.php?page=colors" class="text-links">Color swatch</a></li>
+              <li><a href="index.php?page=colors" target="_blank" class="text-links">Color swatch</a></li>
             </ul>
           </div>
 

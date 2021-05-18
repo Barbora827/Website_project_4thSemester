@@ -198,11 +198,11 @@ if ($products_in_cart) {
                                     <?= $product['options'] ?>
                                     <input type="hidden" name="options" value="<?= $product['options'] ?>">
                                 </td>
-                                <td class="price" id="bebas" style="font-size: 22px; text-align: center"><?= currency_code ?><?= number_format($product['product']['price'], 2) ?></td>
+                                <td class="price" id="bebas" style="font-size: 22px; text-align: center"><?= number_format($product['product']['price'], 2) ?> <?= currency_code ?></td>
                                 <td class="quantity text-center" id="bebas">
                                     <input type="number" class="ajax-update" name="quantity-<?= $num ?>" value="<?= $product['quantity'] ?>" min="1" <?php if ($product['product']['quantity'] != -1) : ?>max="<?= $product['product']['quantity'] ?>" <?php endif; ?> placeholder="Quantity" required>
                                 </td>
-                                <td class="price product-total text-center" id="bebas" style="font-size: 22px; text-align: center"><?= currency_code ?><?= number_format($product['product']['price'] * $product['quantity'], 2) ?></td>
+                                <td class="price product-total text-center" id="bebas" style="font-size: 22px; text-align: center"><?= number_format($product['product']['price'] * $product['quantity'], 2) ?> <?= currency_code ?></td>
                             </tr>
                         <?php endforeach; ?>
                     <?php endif; ?>
@@ -213,7 +213,7 @@ if ($products_in_cart) {
 
             <div class="subtotal mt-3" id="bebas" style="font-size: 25px">
                 <span class="text">Total</span>
-                <span class="price"><?= currency_code ?><?= number_format($subtotal, 2) ?></span>
+                <span class="price"><?= number_format($subtotal, 2) ?> <?= currency_code ?></span>
             </div>
 
 
@@ -246,7 +246,7 @@ if ($products_in_cart) {
                         <li><a href="about.php" class="text-links">About us</a></li>
                         <li><a href="productlist.php" class="text-links">Products</a></li>
                         <li><a href="portfolio.php" class="text-links">Portfolio</a></li>
-                        <li><a href="index.php?page=colors" class="text-links">Color swatch</a></li>
+                        <li><a href="index.php?page=colors" target="_blank" class="text-links">Color swatch</a></li>
                     </ul>
                 </div>
 

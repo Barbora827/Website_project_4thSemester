@@ -222,7 +222,7 @@ if (isset($_SESSION['account_loggedin'])) {
                         <li><a href="about.php" class="text-links">About us</a></li>
                         <li><a href="productlist.php" class="text-links">Products</a></li>
                         <li><a href="portfolio.php" class="text-links">Portfolio</a></li>
-                        <li><a href="index.php?page=colors" class="text-links">Color swatch</a></li>
+                        <li><a href="index.php?page=colors" target="_blank" class="text-links">Color swatch</a></li>
                     </ul>
                 </div>
 

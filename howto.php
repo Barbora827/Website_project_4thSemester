@@ -25,9 +25,10 @@
             <button class="btn btn-outline-dark navbar-toggler" id="side-toggler" style="position: absolute; left: 15px; top: 15px;" type="button" data-toggle="collapse" data-target="#sidebar-side" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fa fa-bars"></i>
             </button>
-            <button class="btn btn-outline-dark" id="shopcart">
+            <a href="index.php?page=cart"><button class="btn btn-outline-dark" id="shopcart">
                 <i class="fa fa-shopping-cart"></i>
             </button>
+            </a>
 
             <!--Collapsing sidebar-->
 
@@ -101,7 +102,7 @@
                         <li><a href="about.php" class="text-links">About us</a></li>
                         <li><a href="productlist.php" class="text-links">Products</a></li>
                         <li><a href="portfolio.php" class="text-links">Portfolio</a></li>
-                        <li><a href="index.php?page=colors" class="text-links">Color swatch</a></li>
+                        <li><a href="index.php?page=colors" target="_blank" class="text-links">Color swatch</a></li>
                     </ul>
                 </div>
 

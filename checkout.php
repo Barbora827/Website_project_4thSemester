@@ -185,7 +185,7 @@ $countries = ["Czech Republic", "Denmark", "Slovakia"];
 </div>
 <p class="error"><?= implode('<br>', $errors) ?></p>
 
-<div class="row justify-content-center bg-danger mx-0 mb-5">
+<div class="row justify-content-center mx-0 mb-5">
     <form action="index.php?page=placeorder" method="post" class="my-5" id="bebas" style="margin-right: 70px;">
 
         <?php if (!isset($_SESSION['account_loggedin'])) : ?>
@@ -256,7 +256,7 @@ $countries = ["Czech Republic", "Denmark", "Slovakia"];
                         <li><a href="about.php" class="text-links">About us</a></li>
                         <li><a href="productlist.php" class="text-links">Products</a></li>
                         <li><a href="portfolio.php" class="text-links">Portfolio</a></li>
-                        <li><a href="index.php?page=colors" class="text-links">Color swatch</a></li>
+                        <li><a href="index.php?page=colors" target="_blank" class="text-links">Color swatch</a></li>
                     </ul>
                 </div>
 
