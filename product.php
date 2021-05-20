@@ -13,14 +13,9 @@ if (isset($_GET['id'])) {
     http_response_code(404);
     exit('Product does not exist!');
   }
-  // Select the product images (if any) from the products_images table
-  $stmt = $pdo->prepare('SELECT * FROM products_images WHERE product_id = ?');
-  $stmt->execute([$product['id']]);
-  // Fetch the product images from the database and return the result as an Array
-  $product_imgs = $stmt->fetchAll(PDO::FETCH_ASSOC);
   // Select the product options (if any) from the products_options table
   $stmt = $pdo->prepare('SELECT title, GROUP_CONCAT(name) AS options, GROUP_CONCAT(price) AS prices FROM products_options WHERE product_category = ? GROUP BY title');
-  $stmt->execute([$product['broad_category']]);
+  $stmt->execute([$product['option_category']]);
   // Fetch the product options from the database and return the result as an Array
   $product_options = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }

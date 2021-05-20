@@ -42,7 +42,7 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="products my-0">
       <div class="row justify-content-center ">
         <?php foreach ($products as $product) : ?>
-          <div class="col-6 col-lg-3 my-4">
+          <div class="col-6 col-md-4 col-lg-3 my-4">
             <a href="<?= url('index.php?page=product&id=' . ($product['id'])) ?>" class="product">
                 <img src="imgs/<?= $product['img'] ?>" width="200" height="250">
               <span class="name mt-2" id="bebas" style="font-size: 20px; color:#343a40"><?= $product['name'] ?></span><br>

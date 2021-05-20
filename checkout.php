@@ -66,7 +66,7 @@ if (isset($_POST['first_name'], $_POST['last_name'], $_POST['address_street'], $
         if ($products_in_cart) {
             // There are products in the cart so we need to select those products from the database
             $array_to_question_marks = implode(',', array_fill(0, count($products_in_cart), '?'));
-            $stmt = $pdo->prepare('SELECT p.id, c.id AS category_id, p.* FROM products p LEFT JOIN products_categories pc ON p.id = pc.product_id LEFT JOIN categories c ON c.id = pc.category_id WHERE p.id IN (' . $array_to_question_marks . ') GROUP BY p.id, c.id');
+            $stmt = $pdo->prepare('SELECT p.id, p.category, p.* FROM products p WHERE p.id IN (' . $array_to_question_marks . ') GROUP BY p.id');
             // We use the array_column to retrieve only the id's of the products
             $stmt->execute(array_column($products_in_cart, 'id'));
             // Fetch the products from the database and return the result as an Array
