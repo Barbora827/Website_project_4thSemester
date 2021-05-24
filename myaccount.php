@@ -136,7 +136,7 @@ if (isset($_POST['register'], $_POST['email'], $_POST['password'], $_POST['cpass
 
    <!-- Footer -->
 <footer class="bg-dark mt-5 text-center text-white">
-    <div class="container p-5">
+    <div class="container p-5" style="margin-bottom: 7px">
 
         <!--Links -->
         <section>

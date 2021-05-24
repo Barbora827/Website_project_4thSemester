@@ -107,23 +107,14 @@ if (isset($_POST['first_name'], $_POST['last_name'], $_POST['address_street'], $
             exit;
         }
     }
-    // Preserve form details if the user encounters an error
-    $account = [
-        'first_name' => $_POST['first_name'],
-        'last_name' => $_POST['last_name'],
-        'address_street' => $_POST['address_street'],
-        'address_city' => $_POST['address_city'],
-        'address_zip' => $_POST['address_zip'],
-        'address_country' => $_POST['address_country']
-    ];
 }
 // Redirect the user if the shopping cart is empty
 if (empty($_SESSION['cart'])) {
     header('Location: ' . url('index.php?page=cart'));
     exit;
 }
-// List of countries available, feel free to remove any country from the array
-$countries = ["Czech Republic", "Denmark", "Slovakia"];
+// List of countries available
+$countries = ["Czech Republic", "Slovakia"];
 
 ?>
 <?= template_header('Checkout') ?>
