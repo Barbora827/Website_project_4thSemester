@@ -2,11 +2,11 @@
 
 // Check to make sure the id parameter is specified in the URL
 if (isset($_GET['id'])) {
-  // Prepare statement and execute, prevents SQL injection
   $stmt = $pdo->prepare('SELECT * FROM products WHERE id = ?');
   $stmt->execute([$_GET['id']]);
   // Fetch the product from the database and return it as array
   $product = $stmt->fetch(PDO::FETCH_ASSOC);
+  
   // Check if the product even exists
   if (!$product) {
     http_response_code(404);
@@ -15,7 +15,7 @@ if (isset($_GET['id'])) {
   // Select the product options (if any) from the products_options table
   $stmt = $pdo->prepare('SELECT option_type, GROUP_CONCAT(name) AS options FROM products_options WHERE product_category = ? GROUP BY option_type');
   $stmt->execute([$product['option_category']]);
-  // Fetch the product options from the database and return the result as an Array
+  // Fetch the product options from the database and return them as array
   $product_options = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 ?>
