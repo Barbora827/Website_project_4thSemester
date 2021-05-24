@@ -10,7 +10,7 @@ if (isset($_POST['product_id'], $_POST['quantity']) && is_numeric($_POST['produc
     foreach ($_POST as $k => $v) {
         if (strpos($k, 'option') !== false) {
             $options .= str_replace('option', '', $k) . $v . ',';
-            $stmt = $pdo->prepare('SELECT * FROM products_options WHERE title = ? AND name = ? AND product_id = ?');
+            $stmt = $pdo->prepare('SELECT * FROM products_options WHERE option_type = ? AND name = ? AND product_id = ?');
             $stmt->execute([str_replace('option', '', $k), $v, $product_id]);
             $option = $stmt->fetch(PDO::FETCH_ASSOC);
             $options_price += $option['price'];

@@ -5,16 +5,15 @@ if (isset($_GET['id'])) {
   // Prepare statement and execute, prevents SQL injection
   $stmt = $pdo->prepare('SELECT * FROM products WHERE id = ?');
   $stmt->execute([$_GET['id']]);
-  // Fetch the product from the database and return the result as an Array
+  // Fetch the product from the database and return it as array
   $product = $stmt->fetch(PDO::FETCH_ASSOC);
-  // Check if the product exists (array is not empty)
+  // Check if the product even exists
   if (!$product) {
-    // Output simple error if the id for the product doesn't exists (array is empty)
     http_response_code(404);
     exit('Product does not exist!');
   }
   // Select the product options (if any) from the products_options table
-  $stmt = $pdo->prepare('SELECT title, GROUP_CONCAT(name) AS options, GROUP_CONCAT(price) AS prices FROM products_options WHERE product_category = ? GROUP BY title');
+  $stmt = $pdo->prepare('SELECT option_type, GROUP_CONCAT(name) AS options, GROUP_CONCAT(price) AS prices FROM products_options WHERE product_category = ? GROUP BY option_type');
   $stmt->execute([$product['option_category']]);
   // Fetch the product options from the database and return the result as an Array
   $product_options = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -112,7 +111,7 @@ if (isset($_GET['id'])) {
           <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
           <?php foreach ($product_options as $option) : ?>
             <select name="option" class="mt-3 mb-2" style="font-size: 18px;" required>
-              <option value="" selected disabled style="display:none"><?= $option['title'] ?></option>
+              <option value="" selected disabled style="display:none"><?= $option['option_type'] ?></option>
               <?php
               $options_names = explode(',', $option['options']);
               ?>
