@@ -13,7 +13,7 @@ if (isset($_GET['id'])) {
     exit('Product does not exist!');
   }
   // Select the product options (if any) from the products_options table
-  $stmt = $pdo->prepare('SELECT option_type, GROUP_CONCAT(name) AS options, GROUP_CONCAT(price) AS prices FROM products_options WHERE product_category = ? GROUP BY option_type');
+  $stmt = $pdo->prepare('SELECT option_type, GROUP_CONCAT(name) AS options FROM products_options WHERE product_category = ? GROUP BY option_type');
   $stmt->execute([$product['option_category']]);
   // Fetch the product options from the database and return the result as an Array
   $product_options = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -116,7 +116,7 @@ if (isset($_GET['id'])) {
               $options_names = explode(',', $option['options']);
               ?>
               <?php foreach ($options_names as $k => $name) : ?>
-                <option value="<?= $name ?>" data-price="<?= $options_prices[$k] ?>"><?= $name ?></option>
+                <option value="<?= $name ?>"><?= $name ?></option>
               <?php endforeach; ?>
             </select>
           <?php endforeach; ?>
