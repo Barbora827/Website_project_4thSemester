@@ -115,7 +115,7 @@ if (isset($_GET['id'])) {
               <?php
               $options_names = explode(',', $option['options']);
               ?>
-              <?php foreach ($options_names as $k => $name) : ?>
+              <?php foreach ($options_names as $name) : ?>
                 <option value="<?= $name ?>"><?= $name ?></option>
               <?php endforeach; ?>
             </select>

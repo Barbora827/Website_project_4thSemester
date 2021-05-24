@@ -62,38 +62,12 @@ if (isset($_POST['first_name'], $_POST['last_name'], $_POST['address_street'], $
         $products_in_cart = isset($_SESSION['cart']) ? $_SESSION['cart'] : [];
         $subtotal = 0.00;
 
-        // If there are products in cart
-        if ($products_in_cart) {
-            // There are products in the cart so we need to select those products from the database
-            $array_to_question_marks = implode(',', array_fill(0, count($products_in_cart), '?'));
-            $stmt = $pdo->prepare('SELECT p.id, p.category, p.* FROM products p WHERE p.id IN (' . $array_to_question_marks . ') GROUP BY p.id');
-            // We use the array_column to retrieve only the id's of the products
-            $stmt->execute(array_column($products_in_cart, 'id'));
-            // Fetch the products from the database and return the result as an Array
-            $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            // Get the current date
-            $current_date = strtotime((new DateTime())->format('Y-m-d H:i:s'));
-            // Iterate the products in cart and add the meta data (product name, desc, etc)
-            foreach ($products_in_cart as &$cart_product) {
-                foreach ($products as $product) {
-                    if ($cart_product['id'] == $product['id']) {
-                        $cart_product['meta'] = $product;
-                        // Calculate the subtotal
-                        $product_price = $cart_product['options_price'] > 0 ? (float)$cart_product['options_price'] : (float)$product['price'];
-                        $subtotal += $product_price * (int)$cart_product['quantity'];
-                    }
-                }
-            }
-        }
-
+      
         if (isset($_POST['checkout']) && $products_in_cart) {
             // Process Normal Checkout
             // Iterate each product in the user's shopping cart
             // Unique transaction ID
-            $transaction_id = strtoupper(uniqid('SC') . substr(md5(mt_rand()), 0, 5));
-            $stmt = $pdo->prepare('INSERT INTO transactions (txn_id, payment_amount, payment_status, created, payer_email, first_name, last_name, address_street, address_city, address_zip, address_country, account_id, payment_method) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)');
             $stmt->execute([
-                $transaction_id,
                 $subtotal + $shippingtotal,
                 'Completed',
                 date('Y-m-d H:i:s'),
@@ -108,14 +82,7 @@ if (isset($_POST['first_name'], $_POST['last_name'], $_POST['address_street'], $
                 'website'
             ]);
             $order_id = $pdo->lastInsertId();
-            foreach ($products_in_cart as $product) {
-                // For every product in the shopping cart insert a new transaction into our database
-                $stmt = $pdo->prepare('INSERT INTO transactions_items (txn_id, item_id, item_price, item_quantity, item_options, item_shipping_price) VALUES (?,?,?,?,?,?)');
-                $stmt->execute([$transaction_id, $product['id'], $product['options_price'] > 0 ? $product['options_price'] : $product['meta']['price'], $product['quantity'], $product['options'], $product['shipping_price']]);
-                // Update product quantity in the products table
-                $stmt = $pdo->prepare('UPDATE products SET quantity = quantity - ? WHERE quantity > 0 AND id = ?');
-                $stmt->execute([$product['quantity'], $product['id']]);
-            }
+
             if ($account_id != null) {
                 // Log the user in with the details provided
                 session_regenerate_id();

@@ -100,8 +100,8 @@ $subtotal = 0.00;
 if ($products_in_cart) {
 
     // There are products in the cart so we need to select those products from the database
-    $array_to_question_marks = implode(',', array_fill(0, count($products_in_cart), '?'));
-    $stmt = $pdo->prepare('SELECT p.id, p.category, p.* FROM products p WHERE p.id IN (' . $array_to_question_marks . ') GROUP BY p.id');
+    $array = implode(',', array_fill(0, count($products_in_cart), '?'));
+    $stmt = $pdo->prepare('SELECT p.id, p.category, p.* FROM products p WHERE p.id IN (' . $array . ') GROUP BY p.id');
     $stmt->execute(array_column($products_in_cart, 'id'));
     $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
