@@ -1,5 +1,5 @@
 <?php
-// User clicked the "Login" button, proceed with the login process... check POST data and validate email
+// User clicked the "Login" button, check POST data and validate email
 if (isset($_POST['login'], $_POST['email'], $_POST['password']) && filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
     // Check if the account exists
     $stmt = $pdo->prepare('SELECT * FROM accounts WHERE email = ?');
@@ -24,21 +24,21 @@ if (isset($_POST['login'], $_POST['email'], $_POST['password']) && filter_var($_
         $error = 'Incorrect Email/Password!';
     }
 }
-// Variable that will output registration errors
+// Output for registration errors
 $register_error = '';
-// User clicked the "Register" button, proceed with the registration process... check POST data and validate email
+// User clicked the "Register" button, check POST data and validate email
 if (isset($_POST['register'], $_POST['email'], $_POST['password'], $_POST['cpassword']) && filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
     // Check if the account exists
     $stmt = $pdo->prepare('SELECT * FROM accounts WHERE email = ?');
     $stmt->execute([ $_POST['email'] ]);
     $account = $stmt->fetch(PDO::FETCH_ASSOC);
     if ($account) {
-        // Account exists!
+        // Account exists
         $register_error = 'Account already exists with this email!';
     } else if ($_POST['cpassword'] != $_POST['password']) {
         $register_error = 'Passwords do not match!';
     } else {
-        // Account doesnt exist, create new account
+        // Account does not exist, create new account
         $stmt = $pdo->prepare('INSERT INTO accounts (email, password, first_name, last_name, address_street, address_city, address_state, address_zip, address_country) VALUES (?,?,"","","","","","","")');
         // Hash the password
         $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
@@ -54,7 +54,6 @@ if (isset($_POST['register'], $_POST['email'], $_POST['password'], $_POST['cpass
             // User has products in cart, redirect them to the checkout page
             header('Location: ' . url('index.php?page=checkout'));
         } else {
-            // Redirect the user back to the same page, they can then see their order history
             header('Location: ' . url('index.php'));
         }
         exit;
