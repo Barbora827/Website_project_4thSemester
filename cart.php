@@ -105,9 +105,6 @@ if ($products_in_cart) {
     $stmt->execute(array_column($products_in_cart, 'id'));
     $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    // Get the current date
-    $current_date = strtotime((new DateTime())->format('Y-m-d H:i:s'));
-
     // Iterate the products in cart 
     foreach ($products_in_cart as &$cart_product) {
         foreach ($products as $product) {
