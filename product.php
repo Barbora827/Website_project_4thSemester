@@ -107,20 +107,24 @@ if (isset($_GET['id'])) {
         <a href="index.php?page=colors" target="_blank"><button class="btn-outline-dark mt-3 mb-5" style="font-size: 20px; cursor:pointer;">Color swatches</button></a>
 
         <form id="product-form" action="<?= url('index.php?page=cart') ?>" method="post">
-          <input class="mt-2 mr-1" type="number" name="quantity" value="1" min="1" <?php if ($product['quantity'] != -1) : ?>max="<?= $product['quantity'] ?>" <?php endif; ?> placeholder="Quantity" required>
+          <input class="mt-2 mr-1" type="number" name="quantity" value="1" min="1" 
+          <?php if ($product['quantity'] != -1) : ?>max="<?= $product['quantity'] ?>" <?php endif; ?> placeholder="Quantity" required>
           <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
           <?php foreach ($product_options as $option) : ?>
             <select name="option" class="mt-3 mb-2" style="font-size: 18px;" required>
               <option value="" selected disabled style="display:none"><?= $option['option_type'] ?></option>
+<<<<<<< Updated upstream
               <?php
               $options_names = explode(',', $option['options']);
               ?>
+=======
+              <?php $options_names = explode(',', $option['options']); ?>
+>>>>>>> Stashed changes
               <?php foreach ($options_names as $name) : ?>
                 <option value="<?= $name ?>"><?= $name ?></option>
               <?php endforeach; ?>
             </select>
-          <?php endforeach; ?>
-          <br>
+          <?php endforeach; ?><br>
           <?php if ($product['quantity'] == 0) : ?>
             <input type="submit" value="Out of Stock" disabled>
           <?php else : ?>
